@@ -621,6 +621,10 @@ html, body {
   }
 }
 
+.content > .highlighter-rouge {
+  clear: none;
+}
+
 .highlight .c, .highlight .cm, .highlight .c1, .highlight .cs {
   color: #909090;
 }
