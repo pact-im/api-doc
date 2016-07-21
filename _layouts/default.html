@@ -14,8 +14,13 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations
 under the License.
 {% endcomment %}
+{% if site.github %}
+  {% assign site_url = site.github.url | default: site.url %}
+{% else %}
+  {% assign site_url = site.url %}
+{% endif %}
 {% assign language_tabs = page.language_tabs | default: [] %}
-{% assign images_url = '/' | prepend: site.images_dir | prepend: '/' | prepend: site.base_url %}
+{% assign images_url = '/' | prepend: site.images_dir | prepend: '/' | prepend: site_url %}
 <html>
   <head>
     <meta charset="utf-8">
@@ -23,7 +28,7 @@ under the License.
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>{{ page.title | default: "API Documentation" | prepend: ' - ' | prepend: site.title }}</title>
 
-    {% include _assets.html %}
+    {% include _assets.html site_url=site_url %}
   </head>
 
   <body class="{{ page_classes }}" data-languages='{{ language_tabs | jsonify }}'>

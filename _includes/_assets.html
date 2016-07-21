@@ -1,6 +1,6 @@
-{% assign css_url = '/' | prepend: site.css_dir | prepend: '/' | prepend: site.base_url %}
-{% assign fonts_url = '/' | prepend: site.fonts_dir | prepend: '/' | prepend: site.base_url %}
-{% assign js_url = '/' | prepend: site.js_dir | prepend: '/' | prepend: site.base_url %}
+{% assign css_url = '/' | prepend: site.css_dir | prepend: '/' | prepend: include.site_url %}
+{% assign fonts_url = '/' | prepend: site.fonts_dir | prepend: '/' | prepend: include.site_url %}
+{% assign js_url = '/' | prepend: site.js_dir | prepend: '/' | prepend: include.site_url %}
 <style>
   @font-face {
     font-family: 'slate';
