@@ -1,44 +1,59 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+## Site settings
+title: Your awesome title
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  jekyll
+
+## Build settings
 # Markdown
-set :markdown_engine, :redcarpet
-set :markdown,
-    fenced_code_blocks: true,
-    smartypants: true,
-    disable_indented_code_blocks: true,
-    prettify: true,
-    tables: true,
-    with_toc_data: true,
-    no_intra_emphasis: true
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+# set :markdown,
+#     disable_indented_code_blocks: true,
+#     prettify: true,
+#     with_toc_data: true,
+#     no_intra_emphasis: true
 
 # Assets
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
-set :fonts_dir, 'fonts'
-
-# Activate the syntax highlighter
-activate :syntax
-
-activate :autoprefixer do |config|
-  config.browsers = ['last 2 version', 'Firefox ESR']
-  config.cascade  = false
-  config.inline   = true
-end
-
-# Github pages require relative links
-activate :relative_assets
-set :relative_links, true
+sass:
+  sass_dir: _sass
+  style: compressed
+css_dir: stylesheets
+js_dir: javascripts
+images_dir: images
+fonts_dir: fonts
+# activate :autoprefixer do |config|
+#   config.browsers = ['last 2 version', 'Firefox ESR']
+#   config.cascade  = false
+#   config.inline   = true
+# end
 
 # Build Configuration
-configure :build do
-  # If you're having trouble with Middleman hanging, commenting
-  # out the following two lines has been known to help
-  activate :minify_css
-  activate :minify_javascript
-  # activate :relative_assets
-  # activate :asset_hash
-  # activate :gzip
-end
+# configure :build do
+#   # If you're having trouble with Middleman hanging, commenting
+#   # out the following two lines has been known to help
+#   activate :minify_css
+#   activate :minify_javascript
+#   # activate :relative_assets
+#   # activate :asset_hash
+#   # activate :gzip
+# end
 
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
-set :port, 4567
+# set :port, 4567

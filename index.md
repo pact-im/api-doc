@@ -15,6 +15,7 @@ includes:
   - errors
 
 search: true
+layout: default
 ---
 
 # Introduction
