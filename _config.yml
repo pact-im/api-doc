@@ -18,6 +18,18 @@ twitter_username: jekyllrb
 github_username:  jekyll
 
 ## Build settings
+# Excludes
+exclude:
+  - .gitignore
+  - .travis.yml
+  - CHANGELOG.md
+  - deploy.sh
+  - font-selection.json
+  - Gemfile*
+  - LICENSE
+  - README.md
+  - Vagrantfile
+
 # Markdown
 markdown: kramdown
 highlighter: rouge
