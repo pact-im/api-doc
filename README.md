@@ -1,3 +1,29 @@
+# Slate for Jekyll
+
+Beautiful static documentation for your API, built with Jekyll and compatible with GitHub Pages.
+
+## Quick Start
+
+```shell
+# Fork and clone this repository
+git clone https://github.com/<your-user>/slate-for-jekyll
+cd slate-for-jekyll
+
+# Install dependencies
+bundle install
+
+# Run locally
+bundle exec jekyll serve
+```
+
+## GitHub Pages
+
+Not only can you host the source code on GitHub and the generated HTML on GitHub Pages as you would with Slate, but now, you can have GitHub build your documentation site as well. Slate for Jekyll replaces the site generator used in Slate (Middleman) with Jekyll, a similar site generator that GitHub Pages can build and run natively.
+
+## Original README contents
+
+---
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
