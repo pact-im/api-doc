@@ -19,6 +19,16 @@
 <link href="{{ 'screen.css' | prepend: css_url }}" media="screen" rel="stylesheet" type="text/css">
 <link href="{{ 'print.css' | prepend: css_url }}" media="print" rel="stylesheet" type="text/css">
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109520633-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-109520633-1');
+</script>
+
 <script src="{{ 'lib/energize.js' | prepend: js_url }}"></script>
 <script src="{{ 'lib/jquery.js' | prepend: js_url }}"></script>
 <script src="{{ 'lib/jquery_ui.js' | prepend: js_url }}"></script>

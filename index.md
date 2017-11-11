@@ -5,8 +5,8 @@ language_tabs:
   - shell
 
 toc_footers:
+  - <a href='https://pact.im'>About Pact</a>
   - <a href='https://app.pact.im/signup'>Sign Up for a API Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
   - intro
@@ -22,6 +22,6 @@ includes:
   - terms
   - legal
 
-search: true
+search: false
 layout: default
 ---
