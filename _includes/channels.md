@@ -238,4 +238,9 @@ ID | The ID of the whatsapp channel
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 phone | true | Must be in format `79250000001` | Contact phone number
-text | true | Must be String | Message text
+text | false | Must be String (DEPRECATED) | Message text
+message | true | Must be String | Message text
+
+<aside class="warning">
+You must use a <code>message</code> param instead of <code>text</code>. <code>text</code> is deprecated and will be removed in the future without notice.
+</aside>
