@@ -50,7 +50,7 @@ This endpoint returns all the company channels.
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
+COMPANY_ID | ID of the company
 
 ## Create new channel
 
@@ -86,7 +86,7 @@ Contact with support if you want to use more than one channel
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
+COMPANY_ID | ID of the company
 
 ### Query Parameters
 
@@ -186,8 +186,8 @@ curl -X DELETE "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-ID | The ID of the channel for disable
+COMPANY_ID | ID of the company
+ID | ID of the channel for disable
 
 ## How to write first message in whatsapp
 

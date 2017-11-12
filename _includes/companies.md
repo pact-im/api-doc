@@ -27,7 +27,7 @@ curl "https://api.pact.im/p1/companies"
             "webhook_url":null
          }
       ]
-   }y after registration. 
+   }
 }
 ```
 
