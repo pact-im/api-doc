@@ -1,7 +1,8 @@
 # Companies
 
 <aside class="notice">
-Each user has at least one company after registration. This company was created automatically.
+Each user has many companies. Each user must have at least one company
+in the system.
 </aside>
 
 ## Get All Companies
@@ -26,7 +27,7 @@ curl "https://api.pact.im/p1/companies"
             "webhook_url":null
          }
       ]
-   }
+   }y after registration. 
 }
 ```
 
@@ -55,7 +56,7 @@ curl -X PUT "https://api.pact.im/p1/companies/ID"
 }
 ```
 
-This endpoint updates an exist user company.
+This endpoint updates specific company attributes.
 
 ### HTTP Request
 
@@ -65,7 +66,7 @@ This endpoint updates an exist user company.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the company for update
+ID | ID of the company for update
 
 ### Query Parameters
 
@@ -74,19 +75,15 @@ Parameter | Required | Validations | Description
 name | false | Must be a String not more than 255 symbols | Company name
 phone | false | Must be a String | Official company phone number or phone number of contact person
 description | false | Must be a String | Company description
-webhook_url | false | Must be a String | Endpoint in the Internet which can receive webhooks
+webhook_url | false | Must be a String | Endpoint for webhooks
 
 <aside class="notice">
-You will not receive important webhooks while without <code>webhook_url</code>.
-If you want to receive <code>webhooks</code> make sure what <code>webhook_url</code> was added
+If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present
 </aside>
 
 
 ## Create new company
 
-<aside class="notice">
-This endpoint doesn't make sense for you if you're not a partner
-</aside>
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies"
@@ -121,6 +118,5 @@ description | false | Must be a String | Company description
 webhook_url | false | Must be a String | Endpoint in the Internet which can receive webhooks
 
 <aside class="notice">
-You will not receive important webhooks while without <code>webhook_url</code>.
-If you want to receive <code>webhooks</code> make sure what <code>webhook_url</code> was added
+If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present
 </aside>

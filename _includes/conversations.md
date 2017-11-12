@@ -1,5 +1,7 @@
 # Conversations
 
+Conversation represents dialogue between you and the client. Currently only 1-1 conversations are supported.
+
 ## Get All Conversations
 
 ```shell
@@ -31,8 +33,6 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
 }
 ```
 
-This endpoint returns ALL company conversations.
-
 ### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/conversations`
@@ -41,7 +41,7 @@ This endpoint returns ALL company conversations.
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
+COMPANY_ID | ID of the company
 
 ## Create new conversation
 
@@ -73,7 +73,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
 }
 ```
 
-This endpoint create a new conversation in the company whatsapp channel. But this operation doesn't garantee future delivery messages to this contact.
+This endpoint creates conversation in the company using whatsapp channel.
 
 ### HTTP Request
 
@@ -83,7 +83,7 @@ This endpoint create a new conversation in the company whatsapp channel. But thi
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
+COMPANY_ID | ID of the company
 
 ### Query Parameters
 
@@ -121,7 +121,6 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/ID"
 }
 ```
 
-This endpoint return information about exist conversations in the company.
 
 ### HTTP Request
 
@@ -131,5 +130,5 @@ This endpoint return information about exist conversations in the company.
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-ID | The ID of the conversation
+COMPANY_ID | ID of the company
+ID | ID of the conversation

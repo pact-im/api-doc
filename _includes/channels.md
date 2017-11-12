@@ -1,11 +1,19 @@
 # Channels
 
 In order to receive and send messages, you need to connect channels.
+Channels is a source of incoming messages in the system. Channel can be:
 
-You can connect the channels either via our web interface on the [settings page](https://app.pact.im/project_settings/channels) or using the API.
+* WhatsApp
+* Instagram
+* Telegram
+* Viber
+* VK
+* Facebook
+
+You can also connect required channels via our web interface under the [settings page](https://app.pact.im/project_settings/channels).
 
 <aside class="warning">
-You must accept webhook's if you want to connect channels via API.
+You have to setup webhook's to make channels fully functional.
 </aside>
 
 
@@ -66,7 +74,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels"
 This endpoint create a new channel in the company.
 
 <aside class="notice">
-Possible to connect only one channel to one company from each provider.
+You can connect only one channel per one company for each provider.
 Contact with support if you want to use more than one channel
 </aside>
 
@@ -89,7 +97,7 @@ Parameter | Required | Validations |
 provider | true | Must be `whatsapp`
 
 <aside class="notice">
-After this operation you'll recieve QR-code webhook on company webhook_url. You need to scan this QR-code on mobile device.
+You will get QR-code webhook after this action. This QR-code must be scanned on mobile device to authorize Pact.im.
 If you can't do this - try to connect Whatsapp via our web interface.
 </aside>
 
@@ -97,13 +105,9 @@ If you can't do this - try to connect Whatsapp via our web interface.
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-provider | true | Must be `instagram` | Shows what you want to connect to Instagram
-login | true | Must be a String | Instagram account login
-password | true | Must be a String | Instagram account passowrd. We don't save password as a plain text and can't access to password in the future
-
-<aside class="notice">
-After this operation you might be need to confirm access. Check instagram application after success connect and allow access if instagram asks.
-</aside>
+provider | true | Must be `instagram` | 
+login | true | Must be a String | Instagram login
+password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
 
 #### Create facebook/vkontakte/telegram/viber channel
 
@@ -131,7 +135,7 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
 }
 ```
 
-This endpoint updates exist channels in the company.
+This endpoint updates existing channel in the company.
 
 ### HTTP Request
 
@@ -141,8 +145,8 @@ This endpoint updates exist channels in the company.
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-ID | The ID of the channel which should be updated
+COMPANY_ID | ID of the company
+ID | ID of the channel
 
 ### Query Parameters
 
@@ -150,8 +154,8 @@ ID | The ID of the channel which should be updated
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-login | true | Must be a String | Instagram account login
-password | true | Must be a String | Instagram account passowrd. We don't save password as a plain text and can't access to password in the future
+login | true | Must be a String | Instagram login
+password | true | Must be a String | Instagram passowrd. We don't save password, only authorization cookies
 
 #### For facebook/vkontakte/telegram/viber channels
 
@@ -159,7 +163,7 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 token | true | Must be a String | ...
 
-## Disable channel
+## Delete channel
 
 ```shell
 curl -X DELETE "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
@@ -174,8 +178,6 @@ curl -X DELETE "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
 }
 ```
 
-This endpoint disable exist channels in the company.
-
 ### HTTP Request
 
 `DELETE https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>`
@@ -187,7 +189,7 @@ Parameter | Description
 COMPANY_ID | The ID of the company
 ID | The ID of the channel for disable
 
-## Write first in whatsapp
+## How to write first message in whatsapp
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversations"
@@ -216,11 +218,10 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversati
 }
 ```
 
-This endpoint provide an ability to write first in whatsapp channel.
+This endpoint provides an ability to create conversation with a client in whatsapp channel.
+When you execute this request we will add a job for delivery. We will send webhook when the operation is complete or failed.
 
-When you send this request will be added a job for delivering your message. When operation finished we send webhooks with information about this operation.
-
-You can check operation result manually. Pleas, look to [Jobs](#jobs)
+You can also poll delivery status here: [Jobs](#jobs)
 
 ### HTTP Request
 
@@ -230,17 +231,13 @@ You can check operation result manually. Pleas, look to [Jobs](#jobs)
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-ID | The ID of the whatsapp channel
+COMPANY_ID | ID of the company
+ID | ID of the channel
 
 ### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 phone | true | Must be in format `79250000001` | Contact phone number
-text | false | Must be String (DEPRECATED) | Message text
 message | true | Must be String | Message text
 
-<aside class="warning">
-You must use a <code>message</code> param instead of <code>text</code>. <code>text</code> is deprecated and will be removed in the future without notice.
-</aside>
