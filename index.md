@@ -17,7 +17,6 @@ includes:
   - messages
   - webhooks
   - jobs
-  - billing
   - errors
   - terms
   - legal
