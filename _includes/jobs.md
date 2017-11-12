@@ -1,4 +1,4 @@
-# Jobs
+# Message delivery Jobs
 
 ## Get Job details
 
@@ -40,14 +40,14 @@ This endpoint returns information about message delivery job
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-CHANNEL_ID | The ID of the channel
-ID | The ID of the job
+COMPANY_ID | ID of the company
+CHANNEL_ID | ID of the channel
+ID | ID of the job
 
 Message may be `DELIVERED` of `NOT DELIVERED`.
 
 Message will be `NOT DELIVERED` if case when:
 
- - Integration doesn't works
- - Contact not present
+ - Integration doesn't work
+ - Contact is not present
  - Message was rejected by external system

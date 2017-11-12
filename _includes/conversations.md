@@ -1,6 +1,7 @@
 # Conversations
 
 Conversation represents dialogue between you and the client. Currently only 1-1 conversations are supported.
+Each conversation has many messages.
 
 ## Get All Conversations
 

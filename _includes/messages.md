@@ -1,5 +1,13 @@
 # Messages
 
+Each message belongs to conversation. Message fields:
+
+* id (Integer)
+* channel_type (String) – whatsapp, instagram, etc..
+* message (String) – message body
+* income (Boolean) – whether message is income or outcome
+
+
 ## Get conversation messages
 
 ```shell
@@ -30,8 +38,6 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/
 }
 ```
 
-This endpoint retrieves all messages from the conversation.
-
 ### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<CONVERSATION_ID>/messages`
@@ -40,8 +46,8 @@ This endpoint retrieves all messages from the conversation.
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-CONVERSATION_ID | The ID of the conversation
+COMPANY_ID | ID of the company
+CONVERSATION_ID | ID of the conversation
 
 ## Send message
 
@@ -72,11 +78,15 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSA
 }
 ```
 
-This endpoint add new message to the conversation. This message will be delivered to the End client.
+This endpoint delivers message to the client under specified
+conversation.
 
-Message was delivered synchronously if you received a response with not null `message_id`. You'll receive a webhook with delivery status if it wasn't happened. It means what was added a job for delivering your message.
+There are two delivery modes: *synchronous* and *asyncronous*.
+If `message_id` field in response is null or empty – it means asyncronous delivery.
 
-You can check operation result manually. Pleas, look to [Jobs](#jobs)
+You'll receive a webhook with the delivery status if delivery is async.
+
+You can check operation result manually here: [Jobs](#jobs)
 
 ### HTTP Request
 
@@ -86,22 +96,17 @@ You can check operation result manually. Pleas, look to [Jobs](#jobs)
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-CONVERSATION_ID | The ID of the conversation
+COMPANY_ID | ID of the company
+CONVERSATION_ID | ID of the conversation
 
 ### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 message | true | Must be String | Message text
-attachments_ids | false | Must be an Array with attachments ids | IDs of attachment which was previously uploaded (if you want send message with attachments).
+attachments_ids | false | Must be an Array with attachments ids | IDs of previously uploaded attachments.
 
-<aside class="notice">
-Send message with attachment is an experimental feature.
-Sending messages without attachment works perfect
-</aside>
-
-## Upload attachments for message
+## Upload attachments
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages/attachments"
@@ -120,7 +125,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSA
 }
 ```
 
-This endpoint creates an attachment which can be sent into conversation.
+This endpoint creates an attachment which can be sent in message.
 
 ### HTTP Request
 
@@ -130,8 +135,8 @@ This endpoint creates an attachment which can be sent into conversation.
 
 Parameter | Description
 --------- | -----------
-COMPANY_ID | The ID of the company
-CONVERSATION_ID | The ID of the conversation
+COMPANY_ID | ID of the company
+CONVERSATION_ID | ID of the conversation
 
 ### Query Parameters
 
@@ -139,6 +144,3 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 file | true | Must be a File | Attachment file
 
-<aside class="notice">
-It's an experimental feature
-</aside>

@@ -1,5 +1,9 @@
 # Webhooks
 
+Webhooks is a way to notify you about new messages or other events in
+our system. It's mandatory to use webhooks for 99% integrations with our
+API.
+
 ## New conversation
 
 > The above command returns JSON structured like this:
@@ -23,7 +27,7 @@
 
 ### When
 
- - Client sent to you new message first time.
+ - Client sends new message first time.
  - You sent message to new client. Message was delivered, conversation was created.
 
 ## New message
@@ -56,15 +60,15 @@
 
 ### When
 
- - Client sent to you new message.
+ - Client sent new message.
  - You sent message to client.
 
 <aside class="success">
-Webhook can be sent ONLY when message received/delivered.
+Webhook will be sent ONLY when message received/delivered.
 </aside>
 
 <aside class="notice">
-<code>job_id</code> attribute will be available only if message was sent in async mode.
+<code>job_id</code> attribute is available only in async delivery mode.
 </aside>
 
 ## Message delivery/read status
@@ -90,19 +94,20 @@ Webhook can be sent ONLY when message received/delivered.
 
 ### When
 
- - Message delivery/read status was changed.
+ - Message was delivered
+ - Message was read
 
 Possible statuses:
 
-  - `-1` : Message are in preparing to deliver state
-  - ` 0` : Message are in delivering state
+  - `-1` : Message is in `preparing to deliver` state
+  - ` 0` : Message is in `delivering` state
   - ` 1` : Message was sent
   - ` 2` : Message was delivered
   - ` 3` : Message was read
 
 If message in a `-1` state - message may not be delivered. You must to care about message delivering by yourself.
 
-## Job executed
+## Delivery job executed
 
 > The above command returns JSON structured like this:
 
@@ -122,7 +127,8 @@ If message in a `-1` state - message may not be delivered. You must to care abou
 
 ### When
 
- - You sent message in async mode. When message delivery job was executed we'll notice you.
+ - You sent message in async mode. Delivery job was executed and
+   delivery result is known.
 
 Possible results:
 
@@ -148,10 +154,10 @@ If message is `NOT DELIVERED` we append `reason` filed with reason information.
 
 ### When
 
-  - You started enabling a `whatsapp` channel in your company
-  - Connection was removed via mobile application interface
+  - You are connecting `whatsapp` channel in your company
+  - User logged out in WhatsApp app
 
-## Whatsapp: channel authorized
+## Whatsapp: channel connected sucessfuly
 
 > The above command returns JSON structured like this:
 
@@ -173,7 +179,7 @@ If message is `NOT DELIVERED` we append `reason` filed with reason information.
 
 ### When
 
-QR-code was scanned successful
+QR-code was scanned successfuly
 
 ## Whatsapp: phone offline
 
@@ -197,7 +203,7 @@ QR-code was scanned successful
 
 ### When
 
-Device with Whatsapp application gone into `offline` by any reason. We can't continue work with whatsapp while phone is offline. You need to resolve this issue if you want to use an integration.
+Device with WhatsApp application is unreachable. We can't work with whatsapp while phone is offline.
 
 ## Whatsapp: phone online
 
@@ -221,9 +227,9 @@ Device with Whatsapp application gone into `offline` by any reason. We can't con
 
 ### When
 
-Device with Whatsapp application was returned back to `online`.
+Device with WhatsApp application is reachable again.
 
-## Whatsapp: channel not awailable
+## Whatsapp: channel not available
 
 > The above command returns JSON structured like this:
 
@@ -232,7 +238,7 @@ Device with Whatsapp application was returned back to `online`.
    "type":"system",
    "severity":"critical",
    "data":{
-      "message":"unawailable",
+      "message":"unavailable",
       "date":"2017-11-11 12:45:53 UTC",
       "details":{
          "entity":"channel",
@@ -246,6 +252,7 @@ Device with Whatsapp application was returned back to `online`.
 ### When
 
 Someone started session at [web.whatsapp.com](https://web.whatsapp.com) or user similar integration.
+We can't work with whatsapp while Whatsapp WEB is open.
 
 ## Whatsapp: trying to resume channel work
 
@@ -294,4 +301,4 @@ We're trying to resume work after previous conflict state
 ### When
 
   - Whatsapp channel was connected and syncronisation was completed
-  - Syncronisation after work resuming
+  - Syncronisation after work resume
