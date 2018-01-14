@@ -6,6 +6,7 @@ HTTP Status | Meaning
 ---------- | -------
 400 | Bad Request -- Your request sucks
 401 | Unauthorized -- Your API key is wrong
+402 | Payment Required -- Paywoll enabled for the company, you must pay before doing API requests
 403 | Forbidden -- The endpoint is unavailable for you
 404 | Not Found -- The specified resource could not be found
 405 | Method Not Allowed -- You tried to access with an invalid method
