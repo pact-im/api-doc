@@ -35,7 +35,8 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/channels"
             "external_id":399,
             "provider":"whatsapp"
          }
-      ]
+      ],
+      "next_page": "fslkfg2lkdfmlwkmlmw4of94wg34lfkm34lg"
    }
 }
 ```
@@ -45,6 +46,14 @@ This endpoint returns all the company channels.
 ### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/channels`
+
+### Query Parameters
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+from | false | Must be a String not more than 255 symbols | Next page token geted from last request. Not valid or empty token return first page
+per | false | Must be a number between 1 and 100 | Number of elements per page. Default: 50
+sort_direction | false | Must be a String | We sort results by id. Change sorting direction. Avilable values: asc, desc. Default: asc.
 
 ### URL Parameters
 
