@@ -325,4 +325,4 @@ We're trying to resume work after previous conflict state
 
 ### When
 
-  - Instagram channel was changed state to disabled
+  - Instagram channel state was changed to `disabled`
