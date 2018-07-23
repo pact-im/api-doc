@@ -302,3 +302,27 @@ We're trying to resume work after previous conflict state
 
   - Whatsapp channel was connected and syncronisation was completed
   - Syncronisation after work resume
+
+## Instagram: changed state to disabled
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "type":"system",
+   "severity":"information",
+   "data":{
+      "message":"IG was set DISABLED",
+      "date":"2017-11-11 12:45:53 UTC",
+      "details":{
+         "entity":"channel",
+         "entity_id":1
+      }
+   }
+}
+
+```
+
+### When
+
+  - Instagram channel state was changed to `disabled`
