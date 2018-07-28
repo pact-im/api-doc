@@ -30,6 +30,31 @@ API.
  - Client sends new message first time.
  - You sent message to new client. Message was delivered, conversation was created.
 
+## Update conversation
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "type":"conversation",
+   "event":"update",
+   "data":{
+      "external_id":1,
+      "name":"Sender Name",
+      "channel_id":1,
+      "channel_type":"whatsapp",
+      "created_at":"2017-11-11 12:45:53 UTC",
+      "last_message_at":null,
+      "last_income_message_at":null
+   }
+}
+
+```
+
+### When
+
+- When conversation with such an sender_external_id already exists and new data is received the sender_name and sender_avatar_url.
+
 ## New message
 
 > The above command returns JSON structured like this:
