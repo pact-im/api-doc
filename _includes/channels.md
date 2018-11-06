@@ -101,9 +101,10 @@ COMPANY_ID | ID of the company
 
 #### Create whatsapp channel
 
-Parameter | Required | Validations |
+Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
 provider | true | Must be `whatsapp`
+sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
 
 <aside class="notice">
 You will get QR-code webhook after this action. This QR-code must be scanned on mobile device to authorize Pact.im.
@@ -114,7 +115,7 @@ If you can't do this - try to connect Whatsapp via our web interface.
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-provider | true | Must be `instagram` | 
+provider | true | Must be `instagram` |
 login | true | Must be a String | Instagram login
 password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
 
@@ -249,4 +250,3 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 phone | true | Must be in format `79250000001` | Contact phone number
 message | true | Must be String | Message text
-
