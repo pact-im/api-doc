@@ -250,3 +250,23 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 phone | true | Must be in format `79250000001` | Contact phone number
 message | true | Must be String | Message text
+
+### PHP example
+`
+  $ch = curl_init();
+  $ID_COMPANY = user_company;
+  $ID_CHANNEL = user_company__whatsup_channel;
+  $private_api_token = user_private_api_token;
+  $phone = user_phone;
+  $message = 'Hello';
+  curl_setopt($ch, CURLOPT_URL, "https://api.pact.im/p1/companies/{$ID_COMPANY}/channels/{$ID_CHANNEL}/conversations");
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, "phone={$phone}&text={$message}");
+  curl_setopt($ch, CURLOPT_POST, 1);
+  $headers = array();
+  $headers[] = 'X-Private-Api-Token: '.$private_api_token;
+  $headers[] = 'Content-Type: application/x-www-form-urlencoded';
+  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  $result = curl_exec($ch);
+  curl_close ($ch);
+`
