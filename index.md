@@ -3,6 +3,7 @@ title: Pact API
 
 language_tabs:
   - shell
+  - php
 
 toc_footers:
   - <a href='http://pact.im'>About Pact</a>
