@@ -87,7 +87,7 @@ description | false | Must be a String | Company description
 webhook_url | false | Must be a String | Endpoint for webhooks
 
 <aside class="notice">
-If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present, valid and can answer on <code>POST</code> json-request <code>{'source':'pact.im', 'operation':'test'}</code> with 200
+If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present. Webhook url must be valid and response code on <code>POST</code> json-request <code>{'source':'pact.im', 'operation':'test'}</code> must be 200
 </aside>
 
 
@@ -127,5 +127,5 @@ description | false | Must be a String | Company description
 webhook_url | false | Must be a String | Endpoint in the Internet which can receive webhooks
 
 <aside class="notice">
-If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present, valid and can answer on <code>POST</code> json-request <code>{'source':'pact.im', 'operation':'test'}</code> with 200
+If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present. Webhook url must be valid and response code on <code>POST</code> json-request <code>{'source':'pact.im', 'operation':'test'}</code> must be 200
 </aside>
