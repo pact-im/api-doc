@@ -2,7 +2,8 @@
 
 Webhooks is a way to notify you about new messages or other events in
 our system. It's mandatory to use webhooks for 99% integrations with our
-API.
+API. Endpoint with <code>webhook_url</code> must response with http status code `200` if endpoint received webhook.
+Webhook could be repeated up to 10 times with 60 sec delay if response status code is not equal 200
 
 ## New conversation
 
