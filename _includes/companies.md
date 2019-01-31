@@ -65,6 +65,10 @@ curl -X PUT "https://api.pact.im/p1/companies/ID"
 }
 ```
 
+```shell
+curl -X POST 'YOUR_WEBHOOK_URL' -d "source=pact.im&operation=test"
+```
+
 This endpoint updates specific company attributes.
 
 ### HTTP Request
@@ -87,7 +91,7 @@ description | false | Must be a String | Company description
 webhook_url | false | Must be a String | Endpoint for webhooks
 
 <aside class="notice">
-If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present
+If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present, valid and can answer on <code>POST</code> json-request <code>'source':'pact.im', 'operation':'test'</code> with 200
 </aside>
 
 
@@ -111,6 +115,10 @@ curl -X POST "https://api.pact.im/p1/companies"
 }
 ```
 
+```shell
+curl -X POST 'YOUR_WEBHOOK_URL' -d "source=pact.im&operation=test"
+```
+
 This endpoint creates a new company for user.
 
 ### HTTP Request
@@ -127,5 +135,5 @@ description | false | Must be a String | Company description
 webhook_url | false | Must be a String | Endpoint in the Internet which can receive webhooks
 
 <aside class="notice">
-If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present
+If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present, valid and can answer on <code>POST</code> json-request <code>'source':'pact.im', 'operation':'test'</code> with 200
 </aside>
