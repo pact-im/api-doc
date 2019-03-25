@@ -22,7 +22,8 @@ Webhook could be repeated up to 10 times within 60 sec delay if response status 
       "channel_type":"whatsapp",
       "created_at":"2017-11-11 12:45:53 UTC",
       "last_message_at":null,
-      "last_income_message_at":null
+      "last_income_message_at":null,
+      "sender_external_id":"79250000001"
    }
 }
 
@@ -32,6 +33,11 @@ Webhook could be repeated up to 10 times within 60 sec delay if response status 
 
  - Client sends new message first time.
  - You sent message to new client. Message was delivered, conversation was created.
+
+<aside class="notice">
+   <code>sender_external_id</code> attribute is available only for whatsapp and instagram conversations.
+</aside>
+
 
 ## Update conversation
 
@@ -48,7 +54,8 @@ Webhook could be repeated up to 10 times within 60 sec delay if response status 
       "channel_type":"whatsapp",
       "created_at":"2017-11-11 12:45:53 UTC",
       "last_message_at":null,
-      "last_income_message_at":null
+      "last_income_message_at":null,
+      "sender_external_id":"79250000001"
    }
 }
 
@@ -57,6 +64,10 @@ Webhook could be repeated up to 10 times within 60 sec delay if response status 
 ### When
 
 - When conversation with such an sender_external_id already exists and new data is received the sender_name and sender_avatar_url.
+
+<aside class="notice">
+   <code>sender_external_id</code> attribute is available only for whatsapp and instagram conversations.
+</aside>
 
 ## New message
 
