@@ -105,7 +105,7 @@ phone | true | Must be in format `79250000001` | Contact phone number
 ## Get conversation details
 
 ```shell
-curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/ID"
+curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations/ID"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
@@ -134,7 +134,7 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/ID"
 
 ### HTTP Request
 
-`GEt https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>`
+`GET https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>`
 
 ### URL Parameters
 
