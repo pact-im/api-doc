@@ -9,7 +9,7 @@ Pact expects for the API key to be included in all API requests to the server in
 
 or as a additional parameter in URI
 
-`"api_endpoint_here?private_api_token=YOUR_API_TOKEN"`
+`"API_ENDPOINT_HERE?private_api_token=YOUR_API_TOKEN"`
 
 <aside class="notice">
 You must replace <code>YOUR_API_TOKEN</code> with your personal API key.
@@ -25,12 +25,12 @@ You can get your Pact API key from [account settings page](https://app.pact.im/a
 ## Examples
 
 ```shell
-# Header 
-curl -X GET "api_endpoint_here"
+# Header
+curl -X GET "API_ENDPOINT_HERE"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 
 # OR use a private_api_token parameter
-curl -X GET "api_endpoint_here?private_api_token=YOUR_API_TOKEN"
+curl -X GET "API_ENDPOINT_HERE?private_api_token=YOUR_API_TOKEN"
 ```
 
 
