@@ -50,6 +50,7 @@ Webhook could be repeated up to 10 times within 60 sec delay if response status 
    "data":{
       "external_id":1,
       "name":"Sender Name",
+      "avatar_url": "https://cdn.pact.im/conversations/avatars/000/000/000/original/open-uri00000000-00000-0p0igg0?0000000000",
       "channel_id":1,
       "channel_type":"whatsapp",
       "created_at":"2017-11-11 12:45:53 UTC",
