@@ -151,5 +151,6 @@ CONVERSATION_ID | ID of the conversation
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-file | true | Must be a File | Attachment file
+file | optional | Must be a File. Mutually exclusive with `file_url` | Attachment file
+file_url | optional | Must be a url (http or https). mutually exclusive with `file` | Attachment file url
 
