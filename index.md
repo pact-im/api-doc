@@ -18,6 +18,7 @@ includes:
   - messages
   - webhooks
   - jobs
+  - service_messages
   - errors
   - terms
   - legal
