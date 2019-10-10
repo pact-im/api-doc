@@ -112,7 +112,7 @@ CONVERSATION_ID | ID of the conversation
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-message | true | Must be String | Message text
+message | false | Must be String | Message text
 attachments_ids | false | Must be an Array with attachments ids | IDs of previously uploaded attachments.
 
 ## Upload attachments
@@ -151,6 +151,6 @@ CONVERSATION_ID | ID of the conversation
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-file | optional | Must be a File. Mutually exclusive with `file_url` | Attachment file
-file_url | optional | Must be a url (http or https). mutually exclusive with `file` | Attachment file url
+file | false | Must be a File. Mutually exclusive with `file_url` | Attachment file
+file_url | false | Must be a url (http or https). mutually exclusive with `file` | Attachment file url
 
