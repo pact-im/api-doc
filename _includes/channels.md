@@ -71,11 +71,12 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels"
 
 > The above command returns JSON structured like this:
 
-```json
+
+```shell
 {
-   "status":"created",
-   "data":{
-      "external_id":1
+   "status": "created",
+   "data": {
+      "external_id": 1
    }
 }
 ```
@@ -272,34 +273,34 @@ message | true | Must be String | Message text
 
 ## Request code (instagram only)
 
+> Request challenge code:
+
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_code"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&challenge_variant=0"
-```
 
-> The above command returns JSON structured like this:
+# The above command returns JSON structured like this:
 
-```json
 {
   "result": "ok"
 }
 ```
 
+> Request two factor authentication code:
+
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_code"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&challenge_type=two_factor"
-```
 
-> The above command returns JSON structured like this:
+# The above command returns JSON structured like this:
 
-```json
 {
   "result": "ok",
   "data": {
-    "reason" => "two_factor_required",
-    "two_factor_requires" => true,
+    "reason": "two_factor_required",
+    "two_factor_requires": true,
     "details": [
       { "value": 1, "key": "sms" },
       { "value": 2, "key": "recovery_code" },
@@ -309,8 +310,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_co
 }
 ```
 
-
-This endpoint request challenge or two factor code.
+This endpoint request challenge or two factor authentication code.
 
 ### HTTP Request
 
@@ -332,7 +332,7 @@ Parameter | Required | Validations | Description
 provider | true | Must be `instagram` |
 challenge_variant | true | |
 
-#### Request two factor code
+#### Request two factor authentication code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -341,35 +341,35 @@ challenge_type | true | Must be `two_factor` |
 
 ## Confirm code (instagram only)
 
+> Confirm challenge code:
+
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
-  -d "provider=instagram&challenge_variant=0"
-```
+  -d "provider=instagram&confirmation_code=123456"
 
-> The above command returns JSON structured like this:
+# The above command returns JSON structured like this:
 
-```json
 {
   "result": "ok"
 }
 ```
+
+> Confirm two factor authentication code:
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&confirmation_type=two_factor&confirmation_variant=3&confirmation_code=123456"
-```
 
-> The above command returns JSON structured like this:
+# The above command returns JSON structured like this:
 
-```json
 {
   "result": "ok"
 }
 ```
 
-This endpoint submit challenge or two factor code.
+This endpoint submit challenge or two factor authentication code.
 
 ### HTTP Request
 
@@ -391,11 +391,11 @@ Parameter | Required | Validations | Description
 provider | true | Must be `instagram` |
 confirmation_code | true | Must be a String |
 
-#### two factor code
+#### two factor authentication code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
 provider | true | Must be `instagram` |
 confirmation_type| true | Must be `two_factor` |
-confirmation_variant | true | Must be a String |
+confirmation_variant | true | Must be a Integer | Variant from request code response (`data->details->value`). Typicaly 1, 2 or 3.
 confirmation_code | true | Must be a String |
