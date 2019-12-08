@@ -348,11 +348,24 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&confirmation_code=123456"
 
-# The above command returns JSON structured like this:
+# The above command returns JSON structured like this.
+
+# Successful response:
 
 {
   "result": "ok"
 }
+
+# Two factor authentication required:
+
+{
+  "result": "ok",
+  "data": {
+    "reason": "two_factor_required",
+    "two_factor_requires": true
+  }
+}
+
 ```
 
 > Confirm two factor authentication code:
