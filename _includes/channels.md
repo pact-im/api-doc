@@ -371,6 +371,20 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   }
 }
 
+# Challenge required:
+
+{
+  "result": "ok",
+  "data": {
+    "reason": "challenge_required",
+    "confirmation_requires": true,
+    "details": [
+      { "value" => 1, "label" => "a*******z@example.org" },
+      { "value" => 0, "label" => "+0 *** ***-**-00" }
+    ]
+  }
+}
+
 ```
 
 > Confirm two factor authentication code:
