@@ -299,7 +299,6 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_co
 {
   "result": "ok",
   "data": {
-    "reason": "two_factor_required",
     "two_factor_requires": true,
     "details": [
       { "value": 1, "key": "sms" },
@@ -361,7 +360,6 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
 {
   "result": "ok",
   "data": {
-    "reason": "two_factor_required",
     "two_factor_requires": true,
     "details": [
       { "value": 1, "key": "sms" },
@@ -376,10 +374,9 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
 {
   "result": "ok",
   "data": {
-    "reason": "challenge_required",
     "confirmation_requires": true,
     "details": [
-      { "value" => 1, "label" => "a*******z@example.org" },
+      { "value" => 1, "label" => "e*******e@example.org" },
       { "value" => 0, "label" => "+0 *** ***-**-00" }
     ]
   }
