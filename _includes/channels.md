@@ -362,7 +362,12 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   "result": "ok",
   "data": {
     "reason": "two_factor_required",
-    "two_factor_requires": true
+    "two_factor_requires": true,
+    "details": [
+      { "value": 1, "key": "sms" },
+      { "value": 2, "key": "recovery_code" },
+      { "value": 3, "key": "totp" }
+    ]
   }
 }
 
