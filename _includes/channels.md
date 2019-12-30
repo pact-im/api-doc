@@ -26,7 +26,7 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/channels"
 
 > The above command returns JSON structured like this:
 
-```json
+```shell
 {
    "status":"ok",
    "data":{
@@ -137,7 +137,7 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
 
 > The above command returns JSON structured like this:
 
-```json
+```shell
 {
    "status":"updated",
    "data":{
@@ -183,7 +183,7 @@ curl -X DELETE "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
 
 > The above command returns JSON structured like this:
 
-```json
+```shell
 {
    "status":"deleted"
 }
@@ -229,7 +229,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversati
 
 > The above command returns JSON structured like this:
 
-```json
+```shell
 {
    "status":"ok",
    "data":{
@@ -299,7 +299,6 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_co
 {
   "result": "ok",
   "data": {
-    "reason": "two_factor_required",
     "two_factor_requires": true,
     "details": [
       { "value": 1, "key": "sms" },
@@ -361,8 +360,25 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
 {
   "result": "ok",
   "data": {
-    "reason": "two_factor_required",
-    "two_factor_requires": true
+    "two_factor_requires": true,
+    "details": [
+      { "value": 1, "key": "sms" },
+      { "value": 2, "key": "recovery_code" },
+      { "value": 3, "key": "totp" }
+    ]
+  }
+}
+
+# Challenge required:
+
+{
+  "result": "ok",
+  "data": {
+    "confirmation_requires": true,
+    "details": [
+      { "value" => 1, "label" => "e*******e@example.org" },
+      { "value" => 0, "label" => "+0 *** ***-**-00" }
+    ]
   }
 }
 
