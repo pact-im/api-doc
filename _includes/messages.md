@@ -63,7 +63,7 @@ CONVERSATION_ID | ID of the conversation
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
-  -d "message=hello"
+  -d "message=hello&attachments_ids[]=attachment_id"
 ```
 
 > The above command returns JSON structured like this:
@@ -153,4 +153,3 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 file | false | Must be a File. Mutually exclusive with `file_url` | Attachment file
 file_url | false | Must be a url (http or https). mutually exclusive with `file` | Attachment file url
-
