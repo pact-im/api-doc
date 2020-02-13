@@ -103,9 +103,10 @@ COMPANY_ID | ID of the company
 #### Create whatsapp channel
 
 Parameter | Required | Validations | Description
---------- | -------- | ----------- |
+--------- | -------- | ----------- | -----------
 provider | true | Must be `whatsapp`
 sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
+do_not_mark_as_read | false | boolean | Do not mark chats as read after synchronization
 
 <aside class="notice">
 You will get QR-code webhook after this action. This QR-code must be scanned on mobile device to authorize Pact.im.
