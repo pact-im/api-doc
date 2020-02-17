@@ -121,6 +121,7 @@ provider | true | Must be `instagram` |
 login | true | Must be a String | Instagram login
 password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
 sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
+sync_comments | false | boolean | Enable comment sync
 
 #### Create facebook/vkontakte/telegram/viber channel
 
