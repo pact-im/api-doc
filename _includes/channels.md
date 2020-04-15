@@ -300,15 +300,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_co
 # The above command returns JSON structured like this:
 
 {
-  "result": "ok",
-  "data": {
-    "two_factor_requires": true,
-    "details": [
-      { "value": 1, "key": "sms" },
-      { "value": 2, "key": "recovery_code" },
-      { "value": 3, "key": "totp" }
-    ]
-  }
+  "result": "ok"
 }
 ```
 
@@ -334,7 +326,7 @@ Parameter | Required | Validations | Description
 provider | true | Must be `instagram` |
 challenge_variant | true | |
 
-#### Request two factor authentication code
+#### Request two factor SMS authentication code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
