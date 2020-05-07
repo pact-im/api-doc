@@ -203,7 +203,7 @@ Parameter | Description
 COMPANY_ID | ID of the company
 ID | ID of the channel for disable
 
-## How to write first message in whatsapp
+## How to write first message to Whatsapp
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversations"
@@ -251,6 +251,15 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversati
 }
 ```
 
+## How to write first message to Whatsapp Business
+
+```shell
+curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversations"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "phone=79250000001&template[id]=template_id&template[language_code]=ru&template[parameters][]=имя"
+```
+
+
 This endpoint provides an ability to create conversation with a client in whatsapp channel.
 When you execute this request we will add a job for delivery. We will send webhook when the operation is complete or failed.
 
@@ -272,7 +281,17 @@ ID | ID of the channel
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 phone | true | Must be in format `79250000001` | Contact phone number
-message | true | Must be String | Message text
+message | false | Must be String | Message text. For regular Whatsapp channel only
+template | false | Must be Object | Template data. For Whatsapp Business channel only
+
+### Whatsapp Business Template Parameters
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+id | true | Must be String | ID of registered template
+language_code | true | Must be String | Language code of registered template (`'en'`, `'ru'`, etc)
+parameters | true | Must be Array | Template substitution parameters
+
 
 ## Request code (instagram only)
 
