@@ -142,3 +142,44 @@ Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the conversation
+
+
+## Update assignee for conversation
+
+```shell
+curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/assign"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "assignee_id=42"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "status":"ok",
+   "data":{
+      "conversation":{
+         "external_id":1,
+      }
+   }
+}
+```
+
+This endpoint update assignee of conversation in the company using whatsapp channel.
+
+### HTTP Request
+
+`PUT https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/assign`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+COMPANY_ID | ID of the company
+ID | ID of the conversation
+
+### Query Parameters
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+assignee_id | false | Must be an integer | User id
