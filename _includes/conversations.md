@@ -183,3 +183,70 @@ ID | ID of the conversation
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 assignee_id | false | Must be an integer | User id
+
+
+## Upload attachment for message
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "status":"ok",
+   "data":{
+      "conversation":{
+         "external_id":1,
+      }
+   }
+}
+```
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+COMPANY_ID | ID of the company
+ID | ID of the conversation
+
+### Query Parameters
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+file | false | Must be a file | Uploaded file
+file_url | false | Must be a file url | File url
+
+### HTTP Request
+
+`POST https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/messages/attachments`
+
+### Code example
+
+```
+$uploaded_file = 'photo.jpeg';
+$curlFile = curl_file_create($uploaded_file);
+
+$company_id = '47669';
+$conversation_id = '13908524';
+$private_api_token = 'WRITE_ME';
+
+$host = 'https://api.pact.im/';
+$path = "p1/companies/${company_id}/conversations/${conversation_id}/messages/attachments";
+$url = "${host}${path}";
+
+$data = array(
+  'file' => $curlFile,
+  'private_api_token' => $private_api_token,
+  'conversation_id' => $conversation_id,
+  'company_id' => $company_id
+);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('application/json; boundary=----WebKitFormBoundarymBBxXanbBHzwHiXz'));
+curl_setopt($ch, CURLOPT_VERBOSE, true);
+$result = curl_exec($ch);
+curl_close($ch);
+
+var_dump($result);
+```
