@@ -255,7 +255,7 @@ Device with WhatsApp application is unreachable. We can't work with whatsapp whi
    "type":"system",
    "severity":"critical",
    "data":{
-      "message":"phone offline",
+      "message":"phone online",
       "date":"2017-11-11 12:45:53 UTC",
       "details":{
          "entity":"channel",
