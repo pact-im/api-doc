@@ -1,7 +1,7 @@
 # Channels
 
 In order to receive and send messages, you need to connect channels.
-Channels is a source of incoming messages in the system. Channel can be:
+Channels is a source of incoming messages in the system. Channel providers:
 
 * WhatsApp
 * Instagram
@@ -11,6 +11,11 @@ Channels is a source of incoming messages in the system. Channel can be:
 * Facebook
 
 You can also connect required channels via our web interface under the [settings page](https://app.pact.im/project_settings/channels).
+
+<aside class="notice">
+You can connect only one channel per one company for each provider.
+Contact with support if you want to use more than one channel
+</aside>
 
 <aside class="warning">
 You have to setup webhook's to make channels fully functional.
@@ -130,6 +135,12 @@ Parameter | Required | Validations | Description
 provider | true | Must be one of: `facebook`, `vkontakte`, `telegram`, `viber` | Shows which provider you want to connect
 token | true | Must be a String | Token for auth.
 
+###### Get token for vk group:
+
+1. Open "Manage" in selected group
+2. Open "API usage" (https://vk.com/public<GROUP_ID>?act=tokens)
+3. Create and copy new token
+
 ## Update channel
 
 ```shell
@@ -205,6 +216,10 @@ ID | ID of the channel for disable
 
 ## How to write first message to Whatsapp
 
+<aside class="notice">
+Whatsapp requires using this method to write the first message.
+</aside>
+
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversations"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
@@ -264,6 +279,10 @@ This endpoint provides an ability to create conversation with a client in whatsa
 When you execute this request we will add a job for delivery. We will send webhook when the operation is complete or failed.
 
 You can also poll delivery status here: [Jobs](#jobs)
+
+<aside class="notice">
+Whatsapp business requires using this method to write the first message.
+</aside>
 
 ### HTTP Request
 

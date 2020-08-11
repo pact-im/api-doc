@@ -165,7 +165,7 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/assi
 }
 ```
 
-This endpoint update assignee of conversation in the company using whatsapp channel.
+This endpoint update assignee the pact user to the conversation in the company.
 
 ### HTTP Request
 
@@ -213,6 +213,10 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 file | false | Must be a file | Uploaded file
 file_url | false | Must be a file url | File url
+
+<aside class="notice">
+Whatsapp requires using this method with existing whatsapp business template
+</aside>
 
 ### HTTP Request
 
