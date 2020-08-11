@@ -155,3 +155,7 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 file | false | Must be a File. Mutually exclusive with `file_url` | Attachment file
 file_url | false | Must be a url (http or https). mutually exclusive with `file` | Attachment file url
+
+<aside class="notice">
+You can use only one parameter: 'file' or 'file_url'. You can`t use both parameters together.
+</aside>
