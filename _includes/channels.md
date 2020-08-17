@@ -180,7 +180,7 @@ ID | ID of the channel
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 login | true | Must be a String | Instagram login
-password | true | Must be a String | Instagram passowrd. We don't save password, only authorization cookies
+password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
 
 #### For facebook/vkontakte/telegram/viber channels
 
