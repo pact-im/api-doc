@@ -128,11 +128,11 @@ password | true | Must be a String | Instagram password. We don't save password,
 sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
 sync_comments | false | boolean | Enable comment sync
 
-#### Create facebook/vkontakte/telegram/viber channel
+#### Create facebook/vkontakte/vkontakte_direct/telegram/viber channel
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-provider | true | Must be one of: `facebook`, `vkontakte`, `telegram`, `viber` | Shows which provider you want to connect
+provider | true | Must be one of: `facebook`, `vkontakte`, `vkontakte_direct`, `telegram`, `viber` | Shows which provider you want to connect
 token | true | Must be a String | Token for auth.
 
 ###### Get token for vk group:
@@ -182,7 +182,7 @@ Parameter | Required | Validations | Description
 login | true | Must be a String | Instagram login
 password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
 
-#### For facebook/vkontakte/telegram/viber channels
+#### For facebook/vkontakte/vkontakte_direct/telegram/viber channels
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
