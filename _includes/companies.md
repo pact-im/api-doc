@@ -85,6 +85,7 @@ name | false | Must be a String not more than 255 symbols | Company name
 phone | false | Must be a String | Official company phone number or phone number of contact person
 description | false | Must be a String | Company description
 webhook_url | false | Must be a String | Endpoint for webhooks
+hidden | false | Must be a Boolean | Hide/Show a company in the Pact web interface
 
 <aside class="notice">
 If you want to receive <code>webhooks</code> make sure that <code>webhook_url</code> is present. Webhook url must be valid and response code on <code>POST</code> json-request <code>{'source':'pact.im', 'operation':'test'}</code> must be 200
