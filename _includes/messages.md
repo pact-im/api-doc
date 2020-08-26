@@ -15,6 +15,31 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+ * Get conversation messages
+ * @link https://pact-im.github.io/api-doc/#get-conversation-messages
+ *
+ * @param int id of the company
+ * @param int id of the conversation
+ * @param string Next page token geted from last request.
+ * Not valid or empty token return first page
+ * @param int Number of elements per page. Default: 50
+ * @param string We sort results by created_at. Change sorting direction. Avilable values: asc, desc. Default: asc.
+ * @return Json|null
+ */
+
+$client->messages->getMessages(
+  $companyId,
+  $conversationId,
+  $from,
+  $per,
+  $sort
+);
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -64,6 +89,24 @@ CONVERSATION_ID | ID of the conversation
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "message=hello&attachments_ids[]=attachment_id"
+```
+
+```php
+<?php
+
+/**
+ * @link https://pact-im.github.io/api-doc/#send-message
+ * @param int id of the company
+ * @param int id of the conversation
+ * @param string Message text
+ * @param array<int>|null attachments
+ */
+
+$client->messages->sendMessage(
+  $companyId,
+  $conversationId,
+  $message
+);
 ```
 
 > The above command returns JSON structured like this:
@@ -123,6 +166,26 @@ attachments_ids | false | Must be an Array with attachments ids | IDs of previou
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages/attachments"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -F "file=@path/to/local/file"
+```
+
+```php
+<?php
+
+$file_path = realpath('image.png');
+$response_attach_1 = $client->attachmehts->uploadAttachment($company, $conversation, $file_path);
+
+$file_url = 'https://en.wikipedia.org/wiki/Altai_Republic#/media/File:Katun.jpg';
+$response_attach_2 = $client->attachmehts->uploadAttachment($company, $conversation, $file_url);
+
+$messages = $client->messages->sendMessage(
+  $company,
+  $conversation,
+  $msg,
+  [
+    $response_attach_1->data->external_id,
+    $response_attach_2->data->external_id
+  ]
+);
 ```
 
 > The above command returns JSON structured like this:

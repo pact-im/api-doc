@@ -29,9 +29,29 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/channels"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+ * This method returns all the company channels.
+ * @link https://pact-im.github.io/api-doc/#get-all-channels
+ *
+ * @param int $companyId Id of the company
+ * @param string $from Next page token geted from last request. Not valid or empty token return first page
+ * @param int $per Number of elements per page. Default: 50
+ * @param string $sort Change sorting direction (sorting by id). Avilable values: asc, desc. Default: asc.
+ */
+
+$client->channels->getChannels($companyId,
+                               $from,
+                               $per,
+                               $sort);
+
+```
+
 > The above command returns JSON structured like this:
 
-```shell
+```json
 {
    "status":"ok",
    "data":{
@@ -74,10 +94,115 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels"
   -d "provider=telegram&token=12345677890"
 ```
 
+> Create channel:
+
+```php
+<?php
+
+/**
+ * Unified method that can create channel in company.
+ * @link https://pact-im.github.io/api-doc/#create-new-channel
+ * @note You can connect only one channel per one company for each provider.
+ *       Contact with support if you want to use more than one channel
+ *
+ * @param int $companyId Id of the company
+ * @param string $provider
+ * @param array $parameters
+ */
+
+// # Create channel unified method
+// Note: The array of parameters variables depending on the provider
+//       You need add required parameters for your particular provider
+
+$parameters = [
+  'sync_messages_from' => $syncMessagesFrom,
+  'do_not_mark_as_read' => $doNotMarkAsRead,
+  // ...
+];
+
+$client->channels->createChannelUnified($companyId,
+                                        $provider,
+                                        $parameters);
+
+```
+
+
+> Create whatsapp channel:
+
+```php
+<?php
+
+/**
+ * This method create a new channel for WhatsApp
+ * @link https://pact-im.github.io/api-doc/#create-new-channel
+ *
+ * @param int $companyId Id of the company
+ * @param DateTimeInterface $syncMessagesFrom Only messages created after will be synchronized
+ * @param bool $doNotMarkAsRead Do not mark chats as read after synchronization
+ * @return Json|null
+ */
+
+$client->channels->createChannelWhatsApp(
+  $companyId,
+  $syncMessagesFrom,
+  $doNotMarkAsRead
+);
+```
+
+> Create instagram channel:
+
+```php
+<?php
+
+/**
+ * This method create a new channel for WhatsApp
+ * @link https://pact-im.github.io/api-doc/#create-new-channel
+ *
+ * @param int $companyId Id of the company
+ * @param string $login Instagram login
+ * @param string $password Instagram passowrd
+ * @param DateTimeInterface $syncMessagesFrom Only messages created after will be synchronized
+ * @param bool $syncComments
+ * @return Json|null
+ */
+
+$client->channels->createChannelInstagram(
+  $companyId,
+  $login,
+  $password,
+  $syncMessagesFrom,
+  $syncComments
+);
+```
+
+> Create facebook/vkontakte/vkontakte_direct/telegram/viber channel
+
+```php
+<?php
+
+/**
+ * This method create a new channel in the company using token.
+ * @link https://pact-im.github.io/api-doc/#create-new-channel
+ * @note List of supported channels that can be created by token
+ *       you can see in link above
+ *
+ * @param int $companyId Id of the company
+ * @param string $provider (facebook, viber, vk, ...)
+ * @param string $token
+ * @return Json|null
+ */
+
+$client->channels->createChannelByToken(
+  $companyId,
+  $provider,
+  $token
+);
+
+```
+
 > The above command returns JSON structured like this:
 
-
-```shell
+```json
 {
    "status": "created",
    "data": {
@@ -148,10 +273,89 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "token=9876543210"
 ```
+> Update channel:
+
+```php
+<?php
+
+/**
+ * This method updates existing channel in the company
+ * @link https://pact-im.github.io/api-doc/#update-channel
+ *
+ * @param int $companyId
+ * @param int $conversationId
+ * @param array $parameters
+ * @return Json|null
+ */
+
+// # Update channel unified method
+// Note: The array of parameters variables depending on the provider
+//       You need add required parameters for your particular provider
+
+$parameters = [
+  'login' => $login,
+  'password' => $password,
+  // ...
+];
+
+$client->channels->updateChannel(
+  $companyId,
+  $conversationId,
+  $parameters
+);
+```
+
+> Update instagram channel:
+
+```php
+<?php
+
+/**
+ * This method updates instagramm channel
+ * @link https://pact-im.github.io/api-doc/#update-channel
+ *
+ * @param int $companyId
+ * @param int $conversationId
+ * @param string $login Instagram login
+ * @param string $password Instagram password
+ * @return Json|null
+ */
+
+$client->channels->updateChannelInstagram(
+  $companyId,
+  $conversationId,
+  $login,
+  $password
+);
+```
+
+> Update facebook/vkontakte/vkontakte_direct/telegram/viber channel:
+
+```php
+<?php
+
+/**
+ * This method updates channels that using tokens to auth
+ * @link https://pact-im.github.io/api-doc/#update-channel
+ * @note List of supported channels that can be created by token
+ *       you can see in link above
+ *
+ * @param int $companyId
+ * @param int $conversationId
+ * @param string $token
+ * @return Json|null
+ */
+
+$client->channels->updateChannelToken(
+  $companyId,
+  $conversationId,
+  $token
+);
+```
 
 > The above command returns JSON structured like this:
 
-```shell
+```json
 {
    "status":"updated",
    "data":{
@@ -195,9 +399,24 @@ curl -X DELETE "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+> Delete channel:
+
+```php
+<?php
+/**
+ * Method deletes (disables) the channel
+ * @link https://pact-im.github.io/api-doc/#delete-channel
+ *
+ * @param int $companyId Id of the company
+ * @param int $channelId Id of the conversation
+ */
+
+$client->chanells->deleteChannel($companyId, $channelId);
+```
+
 > The above command returns JSON structured like this:
 
-```shell
+```json
 {
    "status":"deleted"
 }
@@ -220,6 +439,8 @@ ID | ID of the channel for disable
 Whatsapp requires using this method to write the first message.
 </aside>
 
+> Send first message to whatsapp
+
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversations"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
@@ -227,27 +448,29 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversati
 ```
 
 ```php
-  $ch = curl_init();
-  $ID_COMPANY = user_company;
-  $ID_CHANNEL = user_company__whatsup_channel;
-  $private_api_token = user_private_api_token;
-  $phone = user_phone;
-  $message = 'Hello';
-  curl_setopt($ch, CURLOPT_URL, "https://api.pact.im/p1/companies/{$ID_COMPANY}/channels/{$ID_CHANNEL}/conversations");
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, "phone={$phone}&text={$message}");
-  curl_setopt($ch, CURLOPT_POST, 1);
-  $headers = array();
-  $headers[] = 'X-Private-Api-Token: '.$private_api_token;
-  $headers[] = 'Content-Type: application/x-www-form-urlencoded';
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-  $result = curl_exec($ch);
-  curl_close ($ch);
+<?php
+
+/**
+ * Send first message to whatsapp
+ * @link https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp
+ *
+ * @param int $companyId Id of the company
+ * @param int $channelId Id of the conversation
+ * @param string $phone Phone number
+ * @param string $message Message text
+ */
+
+$client->channels->sendFirstWhatsAppMessage(
+  $companyId,
+  $channelId,
+  $phone,
+  $message
+);
 ```
 
 > The above command returns JSON structured like this:
 
-```shell
+```json
 {
    "status":"ok",
    "data":{
@@ -274,6 +497,32 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversati
   -d "phone=79250000001&template[id]=template_id&template[language_code]=ru&template[parameters][]=имя"
 ```
 
+```php
+<?php
+
+/**
+ * Send first message to whatsapp business
+ * @link https://pact-im.github.io/api-doc/#how-to-write-first-message-to-whatsapp
+ *
+ * @param int $companyId Id of the company
+ * @param int $channelId Id of the conversation
+ * @param string $phone Phone number
+ * @param string $message Message text
+ */
+
+$template = [
+  'id' => $templateId,
+  'language_code' => $templateLanguageCode,
+  'parameters' => []
+];
+
+$client->channels->sendFirstWhatsAppMessage(
+  $companyId,
+  $channelId,
+  $phone,
+  $template
+);
+```
 
 This endpoint provides an ability to create conversation with a client in whatsapp channel.
 When you execute this request we will add a job for delivery. We will send webhook when the operation is complete or failed.
@@ -320,9 +569,34 @@ parameters | true | Must be Array | Template substitution parameters
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_code"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&challenge_variant=0"
+```
 
-# The above command returns JSON structured like this:
+```php
+<?php
 
+/**
+ * @link https://pact-im.github.io/api-doc/#request-code-instagram-only
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'challenge_variant' => $challengeVariant
+];
+
+$client->channels->requestChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
 {
   "result": "ok"
 }
@@ -334,9 +608,34 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_co
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_code"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&challenge_type=two_factor"
+```
 
-# The above command returns JSON structured like this:
+```php
+<?php
 
+/**
+ * @link https://pact-im.github.io/api-doc/#request-code-instagram-only
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'challenge_type' => $challengeType
+];
+
+$client->channels->requestChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
 {
   "result": "ok"
 }
@@ -379,17 +678,44 @@ challenge_type | true | Must be `two_factor` |
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&confirmation_code=123456"
+```
 
-# The above command returns JSON structured like this.
+```php
+<?php
+
+/**
+ * @link https://pact-im.github.io/api-doc/#confirm-code-instagram-only
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'confirmation_code' => $confirmationCode
+];
+
+$client->channels->confirmChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this.
 
 # Successful response:
 
+```json
 {
   "result": "ok"
 }
+```
 
 # Two factor authentication required:
 
+```json
 {
   "result": "ok",
   "data": {
@@ -401,9 +727,11 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
     ]
   }
 }
+```
 
 # Challenge required:
 
+```json
 {
   "result": "ok",
   "data": {
@@ -414,7 +742,6 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
     ]
   }
 }
-
 ```
 
 > Confirm two factor authentication code:
@@ -423,9 +750,36 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "provider=instagram&confirmation_type=two_factor&confirmation_variant=3&confirmation_code=123456"
+```
 
-# The above command returns JSON structured like this:
+```php
+<?php
 
+/**
+ * @link https://pact-im.github.io/api-doc/#confirm-code-instagram-only
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'confirmation_type' => $confirmationType,
+  'confirmation_variant' => $confirmationVariant,
+  'confirmation_code' => $confirmationCode
+];
+
+$client->channels->confirmChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
 {
   "result": "ok"
 }

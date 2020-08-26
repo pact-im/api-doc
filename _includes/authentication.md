@@ -33,4 +33,9 @@ curl -X GET "API_ENDPOINT_HERE"
 curl -X GET "API_ENDPOINT_HERE?private_api_token=YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+$token = '<your super secret token>';
+$pact = new \Pact\PactClient($token);
+```
 

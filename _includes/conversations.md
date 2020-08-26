@@ -10,6 +10,35 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+ * Gets all conversations
+ * @link https://pact-im.github.io/api-doc/#get-all-conversations
+ *
+ * @param int id of the company
+ * @param string Next page token geted from last request.
+ * Not valid or empty token return first page
+ * @param int Number of elements per page. Min 1, max 100, default: 50
+ * @param string Change sorting direction. Available values: asc, desc. Default: asc.
+ * @return Json|null
+ */
+
+// Get conversations:
+
+$client->conversations->getConversations($companyId);
+
+// Get conversations with parameters:
+
+$client->conversations->getConversations(
+  $companyId,
+  $from,
+  $per,
+  $sort
+);
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -61,6 +90,31 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
   -d "provider=whatsapp&phone=79250000001"
 ```
 
+```php
+<?php
+
+/**
+ * Creates new conversation
+ * This endpoint creates conversation in the company
+ * @link https://pact-im.github.io/api-doc/#create-new-conversation
+ *
+ * @param int id of the company
+ * @param string conversation provider (e.g. "whatsapp")
+ * @param array provider related params (e.g. for whatsapp is ["phone": "<phonenum>"])
+ * @return Json|null
+ */
+
+$providerParams = [
+  'phone' => $phone
+];
+
+$client->conversations->createConversation(
+  $companyId,
+  $provider,
+  $providerParams
+);
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -109,6 +163,21 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations/ID"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+ * Retrives conversation details from server
+ * @link https://pact-im.github.io/api-doc/#get-conversation-details
+ *
+ * @param int id of company
+ * @param int id of conversation
+ * @return Json|null
+ */
+
+$client->conversations->getDetails($companyId, $conversationId)
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -152,6 +221,27 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/assi
   -d "assignee_id=42"
 ```
 
+```php
+<?php
+
+/**
+ * Update assignee for conversation
+ * This endpoint update assignee of conversation in the company using whatsapp channel
+ * @link https://pact-im.github.io/api-doc/#update-assignee-for-conversation
+ *
+ * @param int id of company
+ * @param int id of conversation
+ * @param int id of user
+ * @return Json|null
+ */
+
+$client->conversations->updateAssignee(
+  $companyId,
+  $conversationId,
+  $assigneeId
+);
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -192,9 +282,9 @@ assignee_id | false | Must be an integer | User id
 ```json
 {
    "status":"ok",
-   "data":{
-      "conversation":{
-         "external_id":1,
+   "data": {
+      "conversation": {
+         "external_id": 1,
       }
    }
 }
@@ -224,33 +314,60 @@ Whatsapp requires using this method with existing whatsapp business template
 
 ### Code example
 
-```
-$uploaded_file = 'photo.jpeg';
-$curlFile = curl_file_create($uploaded_file);
+```php
+<?php
 
-$company_id = '47669';
-$conversation_id = '13908524';
-$private_api_token = 'WRITE_ME';
+/**
+ * Сreates an attachment which can be sent in message
+ * @link https://pact-im.github.io/api-doc/#upload-attachments
+ *
+ * @param int id of the company
+ * @param int id of the conversation
+ * @param Resource|StreamInterface|string file to upload
+ * @return Json|null
+ */
 
-$host = 'https://api.pact.im/';
-$path = "p1/companies/${company_id}/conversations/${conversation_id}/messages/attachments";
-$url = "${host}${path}";
+// Example with file on local:
 
-$data = array(
-  'file' => $curlFile,
-  'private_api_token' => $private_api_token,
-  'conversation_id' => $conversation_id,
-  'company_id' => $company_id
+$file_path = realpath('image.png');
+$response_attach = $client->attachmehts->uploadAttachment($company, $conversation, $file_path);
+$messages = $client->messages->sendMessage(
+  $company,
+  $conversation,
+  $msg,
+  [
+    $response_attach->data->external_id
+  ]
 );
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('application/json; boundary=----WebKitFormBoundarymBBxXanbBHzwHiXz'));
-curl_setopt($ch, CURLOPT_VERBOSE, true);
-$result = curl_exec($ch);
-curl_close($ch);
+// Example with file url:
 
-var_dump($result);
+$file_url = 'https://en.wikipedia.org/wiki/Altai_Republic#/media/File:Katun.jpg';
+$response_attach = $client->attachmehts->uploadAttachment($company, $conversation, $file_url);
+$messages = $client->messages->sendMessage(
+  $company,
+  $conversation,
+  $msg,
+  [
+    $response_attach->data->external_id
+  ]
+);
+
+// Example with both variants:
+
+$file_path = realpath('image.png');
+$response_attach_1 = $client->attachmehts->uploadAttachment($company, $conversation, $file_path);
+
+$file_url = 'https://en.wikipedia.org/wiki/Altai_Republic#/media/File:Katun.jpg';
+$response_attach_2 = $client->attachmehts->uploadAttachment($company, $conversation, $file_url);
+
+$messages = $client->messages->sendMessage(
+  $company,
+  $conversation,
+  $msg,
+  [
+    $response_attach_1->data->external_id,
+    $response_attach_2->data->external_id
+  ]
+);
 ```
