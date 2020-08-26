@@ -12,6 +12,29 @@ curl "https://api.pact.im/p1/companies"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+ * This method return list of all user companies
+ * @link https://pact-im.github.io/api-doc/#companies
+ *
+ * @param string $from Next page token geted from last request.
+ *               Not valid or empty token return first page
+ * @param int $per Number of elements per page. Default: 50
+ * @param string $sort Change sorting direction. Available values: asc, desc. Default: asc.
+ * @return Json|null
+ */
+
+// Get companies without params
+
+$client->companies->getCompanies();
+
+// Get companies with params
+
+$client->companies->getCompanies($from, $per, $sort)
+```
+
 > The above command returns JSON structured like this:
 
 ```json
@@ -52,6 +75,28 @@ sort_direction | false | Must be a String | We sort results by id. Change sortin
 curl -X PUT "https://api.pact.im/p1/companies/ID"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "name=Test"
+```
+
+```php
+<?php
+
+/**
+  * This method updates specific company attributes
+  * @link https://pact-im.github.io/api-doc/#get-all-companies
+  *
+  * @param int $companyId Id of the company for update
+  * @param string $name Company name
+  * @param string $phone Official company phone number of contact person
+  * @param string $description Company description
+  * @param string $webhook_url Endpoint for webhooks
+  * @return Json|null
+  */
+
+$client->companies->updateCompany($companyId,
+                                  $name,
+                                  $phone,
+                                  $description,
+                                  $webhook_url);
 ```
 
 > The above command returns JSON structured like this:
@@ -99,6 +144,26 @@ If you want to receive <code>webhooks</code> make sure that <code>webhook_url</c
 curl -X POST "https://api.pact.im/p1/companies"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "name=Test"
+```
+
+```php
+<?php
+
+/**
+ * This method creates a new company for user
+ * @link https://pact-im.github.io/api-doc/#update-company
+ *
+ * @param string $name Company name
+ * @param string $phone Official company phone number of contact person
+ * @param string $description Company description
+ * @param string $webhook_url Endpoint for webhooks
+ * @return Json|null
+ */
+
+$client->companies->createCompany($name,
+                                  $phone,
+                                  $description,
+                                  $webhook_url);
 ```
 
 > The above command returns JSON structured like this:
