@@ -705,7 +705,7 @@ $client->channels->confirmChannelCode(
 
 > The above command returns JSON structured like this.
 
-# Successful response:
+> Successful response:
 
 ```json
 {
@@ -713,7 +713,7 @@ $client->channels->confirmChannelCode(
 }
 ```
 
-# Two factor authentication required:
+> Two factor authentication required:
 
 ```json
 {
@@ -729,7 +729,7 @@ $client->channels->confirmChannelCode(
 }
 ```
 
-# Challenge required:
+> Challenge required:
 
 ```json
 {
