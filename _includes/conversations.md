@@ -139,6 +139,11 @@ $client->conversations->createConversation(
 
 This endpoint creates conversation in the company using whatsapp channel.
 
+<aside class="notice">
+If you have a `whatsapp_business` provider, use a different method to create conversation using a template
+</aside>
+[Create first message for whatsapp business provider](#how-to-write-first-message-to-whatsapp-business)
+
 ### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/conversations`
