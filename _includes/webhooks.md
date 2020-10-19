@@ -26,6 +26,7 @@ The configuration of the name display settings does not affect webhooks in any w
       "channel_id":1,
       "channel_type":"whatsapp",
       "created_at":"2017-11-11 12:45:53 UTC",
+      "created_at_timestamp":1603118584,
       "last_message_at":null,
       "last_income_message_at":null,
       "sender_external_id":"79250000001"
@@ -59,6 +60,7 @@ The configuration of the name display settings does not affect webhooks in any w
       "channel_id":1,
       "channel_type":"whatsapp",
       "created_at":"2017-11-11 12:45:53 UTC",
+      "created_at_timestamp":1603118584,
       "last_message_at":null,
       "last_income_message_at":null,
       "sender_external_id":"79250000001"
@@ -85,6 +87,7 @@ The configuration of the name display settings does not affect webhooks in any w
    "event":"new",
    "data":{
       "external_id":1,
+      "external_public_id":1,
       "channel_id":1,
       "channel_type":"whatsapp",
       "channel":{
@@ -93,8 +96,10 @@ The configuration of the name display settings does not affect webhooks in any w
       },
       "conversation_id":1,
       "message":"Message body",
+      "location": {},
       "income":true,
       "created_at":"2017-11-11 12:45:53 UTC",
+      "created_at_timestamp":1603118584,
       "ack":1,
       "attachments":[],
       "job_id":1
@@ -213,6 +218,8 @@ If message is `NOT DELIVERED` we append `reason` filed with reason information.
    "data":{
       "message":"authorized",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -226,6 +233,11 @@ If message is `NOT DELIVERED` we append `reason` filed with reason information.
 
 QR-code was scanned successfuly
 
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Whatsapp: phone offline
 
 > The above command returns JSON structured like this:
@@ -237,6 +249,8 @@ QR-code was scanned successfuly
    "data":{
       "message":"phone offline",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -250,6 +264,11 @@ QR-code was scanned successfuly
 
 Device with WhatsApp application is unreachable. We can't work with whatsapp while phone is offline.
 
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Whatsapp: phone online
 
 > The above command returns JSON structured like this:
@@ -261,6 +280,8 @@ Device with WhatsApp application is unreachable. We can't work with whatsapp whi
    "data":{
       "message":"phone online",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -274,6 +295,11 @@ Device with WhatsApp application is unreachable. We can't work with whatsapp whi
 
 Device with WhatsApp application is reachable again.
 
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Whatsapp: channel not available
 
 > The above command returns JSON structured like this:
@@ -285,6 +311,8 @@ Device with WhatsApp application is reachable again.
    "data":{
       "message":"unavailable",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -299,6 +327,11 @@ Device with WhatsApp application is reachable again.
 Someone started session at [web.whatsapp.com](https://web.whatsapp.com) or user similar integration.
 We can't work with whatsapp while Whatsapp WEB is open.
 
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Whatsapp: trying to resume channel work
 
 > The above command returns JSON structured like this:
@@ -310,6 +343,8 @@ We can't work with whatsapp while Whatsapp WEB is open.
    "data":{
       "message":"trying_resume_work",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -323,6 +358,11 @@ We can't work with whatsapp while Whatsapp WEB is open.
 
 We're trying to resume work after previous conflict state
 
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Whatsapp: synchronization completed
 
 > The above command returns JSON structured like this:
@@ -334,6 +374,8 @@ We're trying to resume work after previous conflict state
    "data":{
       "message":"synchronized",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -348,6 +390,11 @@ We're trying to resume work after previous conflict state
   - Whatsapp channel was connected and syncronisation was completed
   - Syncronisation after work resume
 
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Instagram: changed state to disabled
 
 > The above command returns JSON structured like this:
@@ -359,6 +406,7 @@ We're trying to resume work after previous conflict state
    "data":{
       "message":"IG was set DISABLED",
       "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
       "details":{
          "entity":"channel",
          "entity_id":1
@@ -385,6 +433,7 @@ We're trying to resume work after previous conflict state
       "id": 42,
       "delivered": true,
       "delivered_at":"2018-12-5 15:05:14 UTC",
+      "delivered_at_timestamp":1603118584,
       "delivered_via":"whatsapp"
    }
 }

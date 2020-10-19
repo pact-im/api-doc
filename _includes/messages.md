@@ -54,6 +54,7 @@ $client->messages->getMessages(
             "message":"Hello",
             "income":false,
             "created_at":"2017-09-17T12:44:28.000Z",
+            "created_at_timestamp":1603119600,
             "attachments":[
 
             ]
