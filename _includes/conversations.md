@@ -52,6 +52,7 @@ $client->conversations->getConversations(
             "channel_id":1,
             "channel_type":"whatsapp",
             "created_at":"2017-04-25T18:30:23.076Z",
+            "created_at_timestamp":1603119600,
             "avatar":"/avatars/original/missing.png",
             "sender_external_id":"79260000001",
             "meta":{
@@ -127,6 +128,7 @@ $client->conversations->createConversation(
          "channel_id":1,
          "channel_type":"whatsapp",
          "created_at":"2017-11-11T10:17:10.655Z",
+         "created_at_timestamp":1603119600,
          "avatar":"/avatars/original/missing.png",
          "sender_external_id":"79250000001",
          "meta":{
@@ -195,6 +197,7 @@ $client->conversations->getDetails($companyId, $conversationId)
          "channel_id":1,
          "channel_type":"whatsapp",
          "created_at":"2017-11-11T10:17:10.655Z",
+         "created_at_timestamp":1603119600,
          "avatar":"/avatars/original/missing.png",
          "sender_external_id":"79250000001",
          "meta":{
