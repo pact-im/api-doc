@@ -243,6 +243,13 @@ You will get QR-code webhook after this action. This QR-code must be scanned on 
 If you can't do this - try to connect Whatsapp via our web interface.
 </aside>
 
+#### Create avito channel
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+provider | true | Must be `avito` |
+login | true | Must be a String | avito client_id
+password | true | Must be a String | avito client secret
+
 #### Create instagram channel
 
 Parameter | Required | Validations | Description
