@@ -244,6 +244,7 @@ If you can't do this - try to connect Whatsapp via our web interface.
 </aside>
 
 #### Create avito channel
+
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `avito` |
