@@ -7,6 +7,26 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/channels/<CHANNEL_ID>/jobs/<ID
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+ * This method return info about message delivery job
+ * @link https://pact-im.github.io/api-doc/?shell#message-delivery-jobs
+ *
+ * @param int id of the company
+ * @param int id of the channel
+ * @param int id of the job
+ * @return Json|null
+ */
+
+$client->jobs->getJob(
+  $companyId,
+  $channelId,
+  $jobId
+);
+```
+
 > The above command returns JSON structured like this:
 
 ```json
