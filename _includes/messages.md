@@ -173,10 +173,10 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSA
 <?php
 
 $file_path = realpath('image.png');
-$response_attach_1 = $client->attachmehts->uploadAttachment($company, $conversation, $file_path);
+$response_attach_1 = $client->attachments->uploadAttachment($company, $conversation, $file_path);
 
 $file_url = 'https://en.wikipedia.org/wiki/Altai_Republic#/media/File:Katun.jpg';
-$response_attach_2 = $client->attachmehts->uploadAttachment($company, $conversation, $file_url);
+$response_attach_2 = $client->attachments->uploadAttachment($company, $conversation, $file_url);
 
 $messages = $client->messages->sendMessage(
   $company,
