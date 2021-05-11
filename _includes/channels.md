@@ -6,6 +6,7 @@ Channels is a source of incoming messages in the system. Channel providers:
 * WhatsApp
 * Instagram
 * Telegram
+* Telegram Personal
 * Viber
 * VK
 * Facebook
@@ -267,6 +268,13 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be one of: `facebook`, `vkontakte`, `vkontakte_direct`, `telegram`, `viber` | Shows which provider you want to connect
 token | true | Must be a String | Token for auth.
+
+#### Create telegram personal channel
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+provider | true | Must be `telegram_personal` |
+username | true | Must be a String | Phone number. Example: '7999999999'
 
 ###### Get token for vk group:
 
@@ -568,6 +576,189 @@ id | true | Must be String | ID of registered template
 language_code | true | Must be String | Language code of registered template (`'en'`, `'ru'`, etc)
 parameters | true | Must be Array | Template substitution parameters
 
+## Request code (telegram personal)
+
+> Request code:
+
+```shell
+curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_code"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "provider=telegram_personal"
+```
+
+```php
+<?php
+
+/**
+ * @link https://pact-im.github.io/api-doc/#request-code-telegram-personal
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'provider' => 'telegram_personal'
+];
+
+$client->channels->requestChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "code_length": 6,
+  "code_type": "app",
+  "expires_in": 60,
+  "next_type": "app",
+  "session_id": 1337,
+  "status": "ok"
+}
+```
+
+This endpoint request code for telegram personal
+
+### HTTP Request
+
+`POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/request_code`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+COMPANY_ID | ID of the company
+ID | ID of the channel
+
+### Query Parameters
+
+#### Request challenge code
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- |
+provider | true | Must be `telegram_personal` |
+
+## Confirm code (telegram personal)
+
+> Confirmation type is code
+
+```shell
+curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "provider=telegram_personal&confirmation_type=code&code=2567"
+```
+
+```php
+<?php
+
+/**
+ * @link https://pact-im.github.io/api-doc/#confirm-code-telegram-personal
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'provider' => 'telegram_personal',
+  'confirmation_type' => 'code',
+  'code' => 2567
+];
+
+$client->channels->confirmChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> Successful response:
+
+```json
+{
+  "result": "ok",
+  "state": "enabled"
+}
+```
+
+> Confirmirmation type is password
+
+```shell
+curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/confirm"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "provider=telegram_personal&confirmation_type=password&password=123456"
+```
+
+```php
+<?php
+
+/**
+ * @link https://pact-im.github.io/api-doc/#confirm-code-telegram-personal
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'provider' => 'telegram_personal',
+  'confirmation_type' => 'password',
+  'password' => 'qwerty123'
+];
+
+$client->channels->confirmChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "result": "ok",
+  "state": "enabled"
+}
+```
+
+This endpoint confirm telegram personal channel with two types: code, password
+
+### HTTP Request
+
+`POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/confirm`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+COMPANY_ID | ID of the company
+ID | ID of the channel
+
+### Query Parameters
+
+#### Confirmation type is code
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- |
+provider | true | Must be `telegram_personal` |
+confirmation_type | true | Must be `code` |
+code | true | Must be a Number | Example: `1234`
+
+#### Confirmation type is password
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- |
+provider | true | Must be `telegram_personal` |
+confirmation_type | true | Must be `password` |
+password | true | Must be a String | Example: `qwerty123`
 
 ## Request code (instagram only)
 
