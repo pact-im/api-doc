@@ -16,6 +16,7 @@ includes:
   - channels
   - conversations
   - messages
+  - waba_templates
   - webhooks
   - jobs
   - service_messages
