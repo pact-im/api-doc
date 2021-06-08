@@ -9,6 +9,37 @@ curl "https://api.pact.im/p1/companies/COMPANY_ID/waba_templates"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
 ```
 
+```php
+<?php
+
+/**
+  * Gets WhatsApp Business templates
+  * @link https://pact-im.github.io/api-doc/#waba-templates
+  *
+  * @param int id of the company
+  * @param string Next page token geted from last request.
+  * Not valid or empty token return first page
+  * @param int Number of elements per page. Min 1, max 100, default: 50
+  * @param string Change sorting direction. Available values: asc, desc. Default: asc.
+  * @return Json|null
+  */
+
+# Simple request
+
+$client->companies->getWabaTemplates(
+  $companyId
+);
+
+# Pagination
+
+$client->companies->getWabaTemplates(
+  $companyId,
+  $from,
+  $per,
+  $sort
+);
+```
+
 > returns JSON structured like this:
 
 ```json
