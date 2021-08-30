@@ -152,14 +152,22 @@ Parameter | Description
 COMPANY_ID | ID of the company
 CONVERSATION_ID | ID of the conversation
 
-### Query Parameters
+### Body Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 message | false | Must be String | Message text
 attachments_ids | false | Must be an Array with attachments ids | IDs of previously uploaded attachments.
+interactive | false | object | Interactive message configuration (only WABA channel)
 
 **Important**: Some messengers support only text or only attachment in one message. For example, whatsapp allows to attach a caption for an image but not allows to attach a caption to a PDF document. Multiple attachments are allowed only for vkontakte
+
+### Interactive WABA message with buttons example
+```shell
+curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/message"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "{ "message": "wassup", "interactive": { "type": "button", "buttons": ["fine", "awesome"] } }"
+```
 
 ## Upload attachments
 
