@@ -163,6 +163,41 @@ Parameter | Required | Validations | Description
 provider | true | Must be `whatsapp` | Shows what you want to create new conversation in the whatsapp channel
 phone | true | Must be in format `79250000001` | Contact phone number
 
+## Update note for conversation
+
+```shell
+curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/note"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "note=you+note"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "status":"updated"
+}
+```
+
+This endpoint update note of conversation in the company.
+
+### HTTP Request
+
+`PUT https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/note`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+COMPANY_ID | ID of the company
+CONVERSATION_ID | ID of the conversation
+
+### Body Parameters
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+note | true | Must be String | Note text
+
 ## Get conversation details
 
 ```shell
