@@ -277,6 +277,11 @@ provider | true | Must be `telegram_personal` |
 username | true | Must be a String | Phone number. Example: '7999999999'
 sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
 
+<aside class="notice">
+After you have created a telegram channel. You must request a confirmation code ("Request Code" endpoint). The code will be sent to your device's Telegram App. You must send the received code to the endpoint "Confirm code"
+</aside>
+[Request code](#request-code-telegram-personal) [Confirm code](#confirm-code-telegram-personal) 
+
 ###### Get token for vk group:
 
 1. Open "Manage" in selected group

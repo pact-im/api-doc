@@ -168,7 +168,7 @@ phone | true | Must be in format `79250000001` | Contact phone number
 ```shell
 curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/note"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
-  -d "note=you+note"
+  -d "note=your+note"
 ```
 
 > The above command returns JSON structured like this:
