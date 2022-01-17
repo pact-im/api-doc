@@ -94,7 +94,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
-  -d "provider=telegram_personal&nickname=testuser&text=Hello"
+  -d "provider=telegram_personal&username=testuser&text=Hello"
 ```
 
 ```php
@@ -169,7 +169,7 @@ Parameter | Required | Validations | Description
 provider | true | Must be `whatsapp`, `telegram_personal` | Shows what you want to create new conversation in the whatsapp channel
 phone | true | Must be in format `79250000001` | Contact phone number
 text | false | String | Message text. Works only for `telegram_personal`
-nickname | false | String | User nickname. Works only for `telegram_personal`
+username | false | String | Username. Works only for `telegram_personal`
 
 ## Update note for conversation
 
