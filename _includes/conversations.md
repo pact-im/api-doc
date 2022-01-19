@@ -162,14 +162,26 @@ Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 
-### Query Parameters
+### Query Parameters for `whatsapp` channel
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
-provider | true | Must be `whatsapp`, `telegram_personal` | Shows what you want to create new conversation in the whatsapp channel
+provider | true | Must be `whatsapp` | Shows what you want to create new conversation in the whatsapp channel
 phone | true | Must be in format `79250000001` | Contact phone number
-text | false | String | Message text. Works only for `telegram_personal`
-username | false | String | Username. Works only for `telegram_personal`
+
+### Query Parameters for `telegram_personal` channel
+
+<aside class="notice">
+You must use only one parameter: `phone` or `username`
+</aside>
+
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+provider | true | Must be `telegram_personal` | Shows what you want to create new conversation
+phone | true | Must be in format `79250000001` | Contact phone number
+username | true | String | Username
+text | true | String | Message text
 
 ## Update note for conversation
 
