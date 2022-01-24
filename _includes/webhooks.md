@@ -332,7 +332,7 @@ We can't work with whatsapp while Whatsapp WEB is open.
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: channel disables
+## Whatsapp: channel disabled
 
 > The above command returns JSON structured like this:
 
