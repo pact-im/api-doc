@@ -332,6 +332,37 @@ We can't work with whatsapp while Whatsapp WEB is open.
 <code>timestamp</code> is callback timestamp.
 </aside>
 
+## Whatsapp: channel disables
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "type":"system",
+   "severity":"critical",
+   "data":{
+      "message":"disabled",
+      "date":"2017-11-11 12:45:53 UTC",
+      "date_timestamp":1603118584,
+      "timestamp":1603119138,
+      "details":{
+         "entity":"channel",
+         "entity_id":1
+      }
+   }
+}
+
+```
+
+### When
+
+By some reason whatsapp session is not alive anymore (for example, user exited on the device or whatsapp expired session)
+
+<aside class="notice">
+<code>date_timestamp</code> is date timestamp;
+<code>timestamp</code> is callback timestamp.
+</aside>
+
 ## Whatsapp: trying to resume channel work
 
 > The above command returns JSON structured like this:
