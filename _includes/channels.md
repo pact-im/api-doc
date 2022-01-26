@@ -280,7 +280,7 @@ sync_messages_from | false | timestamp | Only messages created after `sync_messa
 <aside class="notice">
 After you have created a telegram channel. You must request a confirmation code ("Request Code" endpoint). The code will be sent to your device's Telegram App. You must send the received code to the endpoint "Confirm code"
 </aside>
-[Request code](#request-code-telegram-personal) [Confirm code](#confirm-code-telegram-personal) 
+[Request code](#request-code-telegram-personal) [Confirm code](#confirm-code-telegram-personal)
 
 ###### Get token for vk group:
 
@@ -458,8 +458,15 @@ ID | ID of the channel for disable
 ## How to write first message to Whatsapp
 
 <aside class="notice">
-Whatsapp requires using this method to write the first message.
+  Whatsapp requires using this method to write the first message.
 </aside>
+
+> You can check if user exists
+
+```shell
+curl -X GET "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/user_exists?phone=79250000001"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+```
 
 > Send first message to whatsapp
 
