@@ -243,6 +243,16 @@ You will get QR-code webhook after this action. This QR-code must be scanned on 
 If you can't do this - try to connect Whatsapp via our web interface.
 </aside>
 
+#### Create whatsapp business channel
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+provider | true | Must be `whatsapp_business`
+username | true | Must be a String | Users phone number
+account_name | true | Must be a String | Account name for waba profile
+token | true | Must be a String | Token for auth.
+subtype | false | Must be a `regular`, `unlim`, `no_write_first` | Tarif name
+
+
 #### Create avito channel
 
 Parameter | Required | Validations | Description
