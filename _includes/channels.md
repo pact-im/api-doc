@@ -461,13 +461,6 @@ ID | ID of the channel for disable
   Whatsapp requires using this method to write the first message.
 </aside>
 
-> You can check if user exists
-
-```shell
-curl -X GET "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/user_exists?phone=79250000001"
-  -H "X-Private-Api-Token: YOUR_API_TOKEN"
-```
-
 > Send first message to whatsapp
 
 ```shell
@@ -515,6 +508,23 @@ $client->channels->sendFirstWhatsAppMessage(
       "details":null,
       "created_at":1510393147
    }
+}
+```
+
+## How to check if user has Whatsapp account
+
+
+```shell
+curl -X GET "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/user_exists?phone=79250000001"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "status":"ok",
+   "exists": true
 }
 ```
 
