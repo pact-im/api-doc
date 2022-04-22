@@ -252,7 +252,7 @@ username | true | Must be a String | Users phone number
 account_name | true | Must be a String | Account name for waba profile
 token | true | Must be a String | Token for auth.
 subtype | false | Must be a `regular`, `unlim`, `no_write_first` | Tarif name
-
+api_provider | false | Must be a `gupshup`, `360dialog` | Api provider
 
 #### Create avito channel
 
