@@ -286,7 +286,7 @@ token | true | Must be a String | Token for auth.
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `telegram_personal` |
-username | true | Must be a String | Phone number. Example: '7999999999'
+phone | true | Must be a String | Phone number. Example: '7999999999'
 sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
 
 <aside class="notice">
