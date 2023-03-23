@@ -116,8 +116,7 @@ curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels"
 //       You need add required parameters for your particular provider
 
 $parameters = [
-  'sync_messages_from' => $syncMessagesFrom,
-  'do_not_mark_as_read' => $doNotMarkAsRead,
+  'sync_messages_from' => $syncMessagesFrom
   // ...
 ];
 
@@ -236,8 +235,7 @@ COMPANY_ID | ID of the company
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `whatsapp`
-sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
-do_not_mark_as_read | false | boolean | Do not mark chats as read after synchronization
+sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized. Not older than one month.
 
 <aside class="notice">
 You will get QR-code webhook after this action. This QR-code must be scanned on mobile device to authorize Pact.im.
@@ -281,13 +279,27 @@ Parameter | Required | Validations | Description
 provider | true | Must be one of: `facebook`, `vkontakte`, `vkontakte_direct`, `telegram`, `viber` | Shows which provider you want to connect
 token | true | Must be a String | Token for auth.
 
-#### Create telegram personal channel
+#### Create telegram personal channel (by qr code)
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+provider | true | Must be `telegram_personal`
+via_qr_code | true | boolean | Must be a 'true'
+sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized. Not older than one month.
+
+<aside class="notice">
+You will get QR-code webhook after this action. This QR-code must be scanned on mobile device to authorize Pact.im.
+If you can't do this - try to connect Telegram via our web interface.
+</aside>
+
+
+#### Create telegram personal channel (by digital code)
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `telegram_personal` |
 phone | true | Must be a String | Phone number. Example: '7999999999'
-sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
+sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized. Not older than one month.
 
 <aside class="notice">
 After you have created a telegram channel. You must request a confirmation code ("Request Code" endpoint). The code will be sent to your device's Telegram App. You must send the received code to the endpoint "Confirm code"
