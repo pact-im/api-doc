@@ -159,6 +159,7 @@ Parameter | Required | Validations | Description
 message | false | Must be String | Message text
 attachments_ids | false | Must be an Array with attachments ids | IDs of previously uploaded attachments.
 interactive | false | object | Interactive message configuration (only WABA channel)
+send_to_crm | false | boolean | Sync this message to CRM integrations. If not specified the default value is 'true'
 
 **Important**: Some messengers support only text or only attachment in one message. For example, whatsapp allows to attach a caption for an image but not allows to attach a caption to a PDF document. Multiple attachments are allowed only for vkontakte
 
