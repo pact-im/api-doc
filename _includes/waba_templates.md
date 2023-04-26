@@ -53,7 +53,8 @@ $client->companies->getWabaTemplates(
           "name": "template_name",
           "waba_id": "template_id",
           "body": "Здравствуйте, {{1}}",
-          "substitutions_count": 2
+          "substitutions_count": 2,
+          "position": 1
         }
       ],
       "next_page": "fslkfg2lkdfmlwkmlmw4of94wg34lfkm34lg"
