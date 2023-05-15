@@ -474,3 +474,135 @@ We're trying to resume work after previous conflict state
 ### When
 
   - Instagram channel state was changed to `disabled`
+
+
+## Group chats: new conversation
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "type": "group_conversation",
+   "event": "new",
+   "data":{
+      "name": "Group name",
+      "avatar_url": null,
+      "channel_id": 1,
+      "created_at": "2023-04-28T12:34:01.937Z",
+      "external_id": 1,
+      "channel_type": "whatsapp",
+      "last_message_at": null,
+      "sender_external_id": "120363148147828952",
+      "created_at_timestamp": 1682685241,
+      "last_income_message_at": null
+   }
+}
+
+```
+
+### When
+
+ - Group chat member sends new message first time.
+ - You send a message to a group chat. Message was delivered, conversation was created.
+
+
+## Group chats: new group message
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "type": "group_message",
+    "event": "new",
+    "data": {
+        "ack": 0,
+        "income": true,
+        "channel": {
+            "id": 1,
+            "type": "whatsapp"
+        },
+        "message": "Message body",
+        "location": null,
+        "channel_id": 1,
+        "created_at": "2023-04-05T12:00:52.000Z",
+        "attachments": [],
+        "external_id": 1,
+        "channel_type": "whatsapp",
+        "conversation_id": 1,
+        "external_public_id": "79000000000",
+        "created_at_timestamp": 1680696052,
+        "external_created_at_timestamp": 1680696052
+    }
+}
+
+```
+
+### When
+
+ - Group chat member sent new message.
+ - You send a message to a group chat.
+
+
+## Group chats: message delivery/read status
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "type": "group_message",
+   "event": "ack",
+   "data": {
+      "channel": {
+         "id": 65706,
+         "type": "whatsapp"
+      },
+      "timestamp": 1682658436,
+      "external_id": 1,
+      "participant": "79000000000",
+      "conversation_id": 1,
+      "external_public_id": null,
+      "ack": 3
+   }
+}
+
+```
+
+### When
+
+ - Message was delivered
+ - Message was read
+
+Possible statuses:
+
+  - ` 0` : Message is in `delivering` state
+  - ` 1` : Message was sent
+  - ` 2` : Message was delivered
+  - ` 3` : Message was read
+
+
+## Group chats: new active member
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "type": "group_conversation_contact",
+   "event": "new",
+   "data": {
+      "contact": {
+         "external_public_id": "79000000000"
+      },
+      "channel_id": 65706,
+      "channel_type": "whatsapp",
+      "date_timestamp": 1682652148,
+      "conversation_id": 1
+   }
+}
+
+```
+
+### When
+
+ - Group chat member sent new message first time.
+
+
