@@ -182,6 +182,7 @@ provider | true | Must be `telegram_personal` | Shows what you want to create ne
 phone | true | Must be in format `79250000001` | Contact phone number
 username | true | String | Username
 text | true | String | Message text
+send_to_crm | false | boolean | Sync initializing message to CRM integrations. Default: `true`
 
 ## Update note for conversation
 
