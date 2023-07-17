@@ -452,29 +452,6 @@ We're trying to resume work after previous conflict state
   - Service message successfully delivered
   - Service message delivery failed
 
-## Service messages: delivery status
-
-> The above command returns JSON structured like this:
-
-```json
-{
-   "type":"service_messages",
-   "event":"update",
-   "data":{
-      "id": 42,
-      "delivered": true,
-      "delivered_at":"2018-12-5 15:05:14 UTC",
-      "delivered_at_timestamp":1603118584,
-      "delivered_via":"whatsapp"
-   }
-}
-
-```
-
-### When
-
-  - Instagram channel state was changed to `disabled`
-
 
 ## Group chats: new conversation
 
