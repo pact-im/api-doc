@@ -19,7 +19,6 @@ includes:
   - waba_templates
   - webhooks
   - jobs
-  - service_messages
   - errors
   - terms
   - legal
