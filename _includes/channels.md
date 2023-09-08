@@ -242,16 +242,25 @@ You will get QR-code webhook after this action. This QR-code must be scanned on 
 If you can't do this - try to connect Whatsapp via our web interface.
 </aside>
 
-#### Create whatsapp business channel
+#### Create whatsapp business channel (dialog360 by token)
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `whatsapp_business` |
-username | true | Must be a String | Users phone number
-account_name | true | Must be a String | Account name for waba profile
+hosting_type | true | Must be a `cloud`, `onpremise` | Hosting platform type
 token | true | Must be a String | Token for auth.
 subtype | false | Must be a `regular`, `unlim`, `no_write_first` | Tarif name
-api_provider | false | Must be a `gupshup`, `360dialog` | Api provider
+
+#### Create whatsapp business channel (dialog360 by channel_id)
+
+Parameter | Required | Validations | Description
+--------- | -------- | ----------- | -----------
+provider | true | Must be `whatsapp_business` |
+hosting_type | true | Must be a `cloud`, `onpremise` | Hosting platform type
+dialog360_channel_id | true | Must be a String | channel_id for auth
+dialog360_client_id | false | Must be a String | client_id for auth
+account_name | false | Must be a String | Account name for waba profile
+subtype | false | Must be a `regular`, `unlim`, `no_write_first` | Tarif name
 
 #### Create avito channel
 
