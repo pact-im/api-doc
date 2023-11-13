@@ -4,7 +4,7 @@ In order to receive and send messages, you need to connect channels.
 Channels is a source of incoming messages in the system. Channel providers:
 
 * WhatsApp
-* Instagram
+* Instagram_business
 * Telegram
 * Telegram Personal
 * Viber
@@ -149,29 +149,29 @@ $client->channels->createChannelWhatsApp(
 );
 ```
 
-> Create instagram channel:
-
 ```php
 <?php
 
 /**
- * This method create a new channel for WhatsApp
+ * This method create a new channel for InstagramBusiness
  * @link https://pact-im.github.io/api-doc/#create-new-channel
  *
  * @param int $companyId Id of the company
- * @param string $login Instagram login
- * @param string $password Instagram passowrd
- * @param DateTimeInterface $syncMessagesFrom Only messages created after will be synchronized
- * @param bool $syncComments
+ * @param string $private_api_token on our side
+ * @param string $provider there must be "instagram_business"
+ * @param hash $data data from Instagram
+ * @param string $token from Instagram data hash
+ * @param string $phone user phone
  * @return Json|null
  */
 
-$client->channels->createChannelInstagram(
+$client->channels->createChannelInstagramBusiness(
   $companyId,
-  $login,
-  $password,
-  $syncMessagesFrom,
-  $syncComments
+  $private_api_token,
+  $provider,
+  $data,
+  $token
+  $phone
 );
 ```
 
@@ -261,16 +261,27 @@ provider | true | Must be `avito` |
 login | true | Must be a String | avito client_id
 password | true | Must be a String | avito client secret
 
-#### Create instagram channel
+#### Create instagram business channel
+
+1) It is necessary to read the documentation [Instagram](https://developers.facebook.com/docs/instagram/business-login-for-instagram) and follow all the steps indicated.
+2) It is necessary to send a request to us with the data obtained from [answer](https://developers.facebook.com/docs/instagram/business-login-for-instagram#example-response).
+Example request:
+``` json
+{
+   "provider":"instagram_business",
+   "token":"QWERTY",
+   "phone":"+79131112233",
+   "data": { "<instagram info>" }
+}
+```
 
 Parameter | Required | Validations | Description
---------- | -------- | ----------- | -----------
-provider | true | Must be `instagram` |
-login | true | Must be a String | Instagram login
-password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
-sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized
-sync_comments | false | boolean | Enable comment sync
-sync_mentions | false | boolean | Enable sync mentions
+--------- | -------- |--------| -----------
+provider | true | Must be `instagram_business` |
+private_api_token | true | String | User privat token
+data | true | Hash   | Data from Instagram that was transferred to redirect_url
+phone | true | String | User phone
+token | true | String | Instagram token
 
 #### Create facebook/vkontakte/vkontakte_direct/telegram/viber channel
 
@@ -425,14 +436,7 @@ ID | ID of the channel
 
 ### Query Parameters
 
-#### For instagram channel
-
-Parameter | Required | Validations | Description
---------- | -------- | ----------- | -----------
-login | true | Must be a String | Instagram login
-password | true | Must be a String | Instagram password. We don't save password, only authorization cookies
-
-#### For facebook/vkontakte/vkontakte_direct/telegram/viber channels
+#### For facebook/vkontakte/vkontakte_direct/telegram/viber/instagram_business channels
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
