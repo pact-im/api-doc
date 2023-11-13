@@ -151,107 +151,6 @@ $client->channels->createChannelWhatsApp(
 
 > Create instagram business channel:
 
-#### To get started, you need to follow these steps:
-1) Step 1: Send a request to Instagram API to receive an access token.
-Construct the Login URL. At this point the user is authenticated to Instagram.
-#### [More details here](https://developers.facebook.com/docs/instagram/business-login-for-instagram#step-1--construct-the-login-url)
-```
-https://www.facebook.com/dialog/oauth
-?client_id={client-id}
-&display={display}
-&extras={extras}
-&redirect_uri={redirect-uri}
-&response_type={response_type}
-&scope={scope}
-```
-
-2) Step 2: Capture User access token.
-Once the user completes the Instagram login process, it sends the data to the `redirect_uri` specified in step 1.
-#### Example data:
-```json
-{
-  "uid":"111",
-  "via_qr_code":true,
-  "phone":"+79131112233",
-  "data":{
-    "uid":"123",
-    "info":{
-      "name":"Ivan Ivanov",
-      "image":"https://example",
-      "last_name":"Ivanov",
-      "first_name":"Ivan"
-    },
-    "extra":{
-      "raw_info":{
-        "id":"123",
-        "name":"Ivan Ivanov",
-        "picture":{
-          "data":{
-            "url":"https://example",
-            "width":50,
-            "height":50,
-            "is_silhouette":false
-          }
-        },
-        "last_name":"Ivanov",
-        "first_name":"Ivan"
-      }
-    },
-    "provider":"instagram_business",
-    "credentials":{
-      "token":"QWERTY",
-      "expires":false
-    }
-  }
-}
-```
-#### Step 3: Send data to create a channel on our side.
-The data from step 2 must be sent to us
-
-#### Example request:
-
-```shell
-curl 'https://api.pact.im/p1/companies/<COMPANY_ID>/channels'
--h 'X-Private-Api-Token: QWERTY'
--h 'Content-Type: application/json'
--d '{
-    "provider": "instagram_business",
-    "token": "QWERTY",
-    "phone": "+79139230564",
-    "data": {
-        "uid": "123",
-        "info": {
-            "name": "Ivan Ivanov",
-            "image": "https://example",
-            "last_name": "Ivanov",
-            "first_name": "Ivan"
-        },
-        "extra": {
-            "raw_info": {
-                "id": "123",
-                "name": "Ivan Ivanov",
-                "picture": {
-                    "data": {
-                        "url": "https://example",
-                        "width": 50,
-                        "height": 50,
-                        "is_silhouette": false
-                    }
-                },
-                "last_name": "Ivanov",
-                "first_name": "Ivan"
-            }
-        },
-        "provider": "instagram_business",
-        "credentials": {
-            "token": "QWERTY",
-            "expires": false
-        }
-    }
-}'
-```
-After all actions, a channel will be created on our side.
-
 ```php
 <?php
 
@@ -374,6 +273,18 @@ login | true | Must be a String | avito client_id
 password | true | Must be a String | avito client secret
 
 #### Create instagram business channel
+
+1) It is necessary to read the documentation [Instagram](https://developers.facebook.com/docs/instagram/business-login-for-instagram) and follow all the steps indicated.
+2) It is necessary to send a request to us with the data obtained from [answer](https://developers.facebook.com/docs/instagram/business-login-for-instagram#example-response).
+   Example request:
+``` json
+{
+   "provider":"instagram_business",
+   "token":"QWERTY",
+   "phone":"+79131112233",
+   "data": { "<instagram info>" }
+}
+```
 
 Parameter | Required | Validations | Description
 --------- | -------- |--------| -----------
