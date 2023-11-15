@@ -274,17 +274,73 @@ password | true | Must be a String | avito client secret
 
 #### Create instagram business channel
 
-1) It is necessary to read the documentation [Instagram](https://developers.facebook.com/docs/instagram/business-login-for-instagram) and follow all the steps indicated.
-2) It is necessary to send a request to us with the data obtained from [answer](https://developers.facebook.com/docs/instagram/business-login-for-instagram#example-response).
-   Example request:
-``` json
+Steps:
+1. It is necessary to follow the instructions for Facebook until you receive the [token](https://developers.facebook.com/docs/instagram/business-login-for-instagram#step-3--capture-user-access-token).  
+2. Make a request for `https://graph.facebook.com/v4.0/me?fields=first_name,last_name,picture,name,email` indicating the token.  
+   In the response you will receive information about your user:  
+```json
 {
-   "provider":"instagram_business",
-   "token":"QWERTY",
-   "phone":"+79131112233",
-   "data": { "<instagram info>" }
+   "first_name": "Ivan",
+   "last_name": "Ivanov",
+   "picture": {
+      "data": {
+         "height": 50,
+         "is_silhouette": false,
+         "url": "https://20XiONaB1kJl6ZzU",
+         "width": 50
+      }
+   },
+   "name": "Ivan Ivanov",
+   "id": "123"
+}   
+```
+
+3. Send a request to us  `p1/companies/<company_id>/channels`.  
+   The request body must contain:  
+```json
+{
+"provider": "instagram_business",
+"token": "<token>",
+"phone": "+79131112233",
+"data": "<response body from previous request>"
 }
 ```
+Example answer:  
+```json
+{
+   "status":"created",
+   "data":{
+      "external_id":66742,
+      "billing_start_date":0
+   },
+   "create_pages":{
+      "page":[
+         {
+            "id":919,
+            "auth_id":66742,
+            "company_id":87744,
+            "token":"123",
+            "name":"name",
+            "ig_name":null,
+            "ig_username":"user_name",
+            "ig_external_id":"45678",
+            "ig_business_account_external_id":"98765434",
+            "external_id":"45678765",
+            "category":"category_name",
+            "enabled":null,
+            "created_at":"2023-11-14T16:24:33.539Z",
+            "updated_at":"2023-11-14T16:24:34.019Z"
+         }
+      ]
+   }
+}
+```
+At this stage, a channel was created and information on Instagram business accounts was uploaded.  
+
+4. Send a request to `https://staging-api.pact.im/p1/companies/<company_id>/channels/<data[:external_id]>/enable_page_instagram?page_id=<page[:id]>,sync_period=<sync_period>`.  
+   `sync_period` - used to determine what period of messages will be synchronized, 'day', 'week', 'month', 'all'.  
+   
+   This is necessary in order to determine which Instagram account to use.  
 
 Parameter | Required | Validations | Description
 --------- | -------- |--------| -----------
