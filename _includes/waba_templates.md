@@ -44,21 +44,20 @@ $client->companies->getWabaTemplates(
 
 ```json
 {
-   "status":"ok",
-   "data":{
-      "waba_templates":[
-        {
-          "id": 321,
-          "company_id": 123,
-          "name": "template_name",
-          "waba_id": "template_id",
-          "body": "Здравствуйте, {{1}}",
-          "substitutions_count": 2,
-          "position": 1
-        }
-      ],
-      "next_page": "fslkfg2lkdfmlwkmlmw4of94wg34lfkm34lg"
-   }
+  "status":"ok",
+  "data":{
+    "waba_templates":[
+      {
+        "id":7754,
+        "company_id":72562,
+        "name":"Шаблон с переменной",
+        "waba_id":"1_shablon_kakoito",
+        "body":"Тестовый шаблон с какой то переменной {{1}}",
+        "substitutions_count":1,
+        "position":7754
+      }
+    ]
+  }
 }
 ```
 
