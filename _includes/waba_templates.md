@@ -52,7 +52,7 @@ $client->companies->getWabaTemplates(
         "company_id":72562,
         "name":"Шаблон с переменной",
         "waba_id":"1_shablon_kakoito",
-        "body":"Тестовый шаблон с какой то переменной {{1}}",
+        "body":"Тестовый шаблон с какой то переменной {% raw %}{{1}}{% endraw %}",
         "substitutions_count":1,
         "position":7754
       }
