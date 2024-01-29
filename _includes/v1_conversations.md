@@ -1,9 +1,9 @@
-# Conversations
+## Conversations
 
 Conversation represents dialogue between you and the client. Currently only 1-1 conversations are supported.
 Each conversation has many messages.
 
-## Get All Conversations
+### Get All Conversations
 
 ```shell
 curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
@@ -65,11 +65,11 @@ $client->conversations->getConversations(
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/conversations`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -77,13 +77,13 @@ from | false | Must be a String not more than 255 symbols | Next page token gete
 per | false | Must be a number between 1 and 100 | Number of elements per page. Default: 50
 sort_direction | false | Must be a String | We sort results by id. Change sorting direction. Avilable values: asc, desc. Default: asc.
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 
-## Create new conversation
+### Create new conversation
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations"
@@ -152,24 +152,24 @@ If you have a `whatsapp_business` provider, use a different method to create con
 </aside>
 [Create first message for whatsapp business provider](#how-to-write-first-message-to-whatsapp-business)
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/conversations`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 
-### Query Parameters for `whatsapp` channel
+#### Query Parameters for `whatsapp` channel
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `whatsapp` | Shows what you want to create new conversation in the whatsapp channel
 phone | true | Must be in format `79250000001` | Contact phone number
 
-### Query Parameters for `telegram_personal` channel
+#### Query Parameters for `telegram_personal` channel
 
 <aside class="notice">
 You must use only one parameter: `phone` or `username`
@@ -184,7 +184,7 @@ username | true | String | Username
 text | true | String | Message text
 send_to_crm | false | boolean | Sync initializing message to CRM integrations. Default: `true`
 
-## Update note for conversation
+### Update note for conversation
 
 ```shell
 curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/note"
@@ -202,24 +202,24 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/note
 
 This endpoint update note of conversation in the company.
 
-### HTTP Request
+#### HTTP Request
 
 `PUT https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/note`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 CONVERSATION_ID | ID of the conversation
 
-### Body Parameters
+#### Body Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 note | true | Must be String | Note text
 
-## Get conversation details
+### Get conversation details
 
 ```shell
 curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations/ID"
@@ -265,11 +265,11 @@ $client->conversations->getDetails($companyId, $conversationId)
 ```
 
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
@@ -277,7 +277,7 @@ COMPANY_ID | ID of the company
 ID | ID of the conversation
 
 
-## Update assignee for conversation
+### Update assignee for conversation
 
 ```shell
 curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/assign"
@@ -321,24 +321,24 @@ $client->conversations->updateAssignee(
 
 This endpoint update assignee the pact user to the conversation in the company.
 
-### HTTP Request
+#### HTTP Request
 
 `PUT https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/assign`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the conversation
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 assignee_id | false | Must be an integer | User id
 
-## Toggle bitrix block openlines
+### Toggle bitrix block openlines
 
 ```shell
 curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/toggle_bitrix_block_openlines"
@@ -371,24 +371,24 @@ curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/conversations/<ID>/togg
 
 This endpoint toggle bitrix_block_openlines param to the conversation in the company.
 
-### HTTP Request
+#### HTTP Request
 
 `PUT https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/toggle_bitrix_block_openlines`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the conversation
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 enabled | false | Must be a boolean | Enabled status
 
-## Upload attachment for message
+### Upload attachment for message
 
 > The above command returns JSON structured like this:
 
@@ -403,14 +403,14 @@ enabled | false | Must be a boolean | Enabled status
 }
 ```
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the conversation
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -421,11 +421,11 @@ file_url | false | Must be a file url | File url
 Whatsapp requires using this method with existing whatsapp business template
 </aside>
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<ID>/messages/attachments`
 
-### Code example
+#### Code example
 
 ```php
 <?php

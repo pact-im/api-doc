@@ -1,4 +1,4 @@
-# Webhooks
+## Webhooks
 
 Webhooks is a way to notify you about new messages or other events in our system.
 It's mandatory to use webhooks for 99% integrations with our API.
@@ -11,7 +11,7 @@ Webhook could be repeated up to 10 times within 60 sec delay if response status 
 The configuration of the name display settings does not affect webhooks in any way.
 </aside>
 
-## New conversation
+### New conversation
 
 > The above command returns JSON structured like this:
 
@@ -35,7 +35,7 @@ The configuration of the name display settings does not affect webhooks in any w
 
 ```
 
-### When
+#### When
 
  - Client sends new message first time.
  - You sent message to new client. Message was delivered, conversation was created.
@@ -45,7 +45,7 @@ The configuration of the name display settings does not affect webhooks in any w
 </aside>
 
 
-## Update conversation
+### Update conversation
 
 > The above command returns JSON structured like this:
 
@@ -69,7 +69,7 @@ The configuration of the name display settings does not affect webhooks in any w
 
 ```
 
-### When
+#### When
 
 - When conversation with such an sender_external_id already exists and new data is received the sender_name and sender_avatar_url.
 
@@ -77,7 +77,7 @@ The configuration of the name display settings does not affect webhooks in any w
    <code>sender_external_id</code> attribute is available only for whatsapp and instagram conversations.
 </aside>
 
-## New message
+### New message
 
 > The above command returns JSON structured like this:
 
@@ -108,7 +108,7 @@ The configuration of the name display settings does not affect webhooks in any w
 
 ```
 
-### When
+#### When
 
  - Client sent new message.
  - You sent message to client.
@@ -121,7 +121,7 @@ Webhook will be sent ONLY when message received/delivered.
 <code>job_id</code> attribute is available only in async delivery mode.
 </aside>
 
-## Message delivery/read status
+### Message delivery/read status
 
 > The above command returns JSON structured like this:
 
@@ -142,7 +142,7 @@ Webhook will be sent ONLY when message received/delivered.
 
 ```
 
-### When
+#### When
 
  - Message was delivered
  - Message was read
@@ -157,7 +157,7 @@ Possible statuses:
 
 If message in a `-1` state - message may not be delivered. You must to care about message delivering by yourself.
 
-## Delivery job executed
+### Delivery job executed
 
 > The above command returns JSON structured like this:
 
@@ -175,7 +175,7 @@ If message in a `-1` state - message may not be delivered. You must to care abou
 
 ```
 
-### When
+#### When
 
  - You sent message in async mode. Delivery job was executed and
    delivery result is known.
@@ -187,7 +187,7 @@ Possible results:
 
 If message is `NOT DELIVERED` we append `reason` filed with reason information.
 
-## Whatsapp: new QR-code
+### Whatsapp: new QR-code
 
 > The above command returns JSON structured like this:
 
@@ -202,12 +202,12 @@ If message is `NOT DELIVERED` we append `reason` filed with reason information.
 
 ```
 
-### When
+#### When
 
   - You are connecting `whatsapp` channel in your company
   - User logged out in WhatsApp app
 
-## Whatsapp: channel connected sucessfuly
+### Whatsapp: channel connected sucessfuly
 
 > The above command returns JSON structured like this:
 
@@ -229,7 +229,7 @@ If message is `NOT DELIVERED` we append `reason` filed with reason information.
 
 ```
 
-### When
+#### When
 
 QR-code was scanned successfuly
 
@@ -238,7 +238,7 @@ QR-code was scanned successfuly
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: phone offline
+### Whatsapp: phone offline
 
 > The above command returns JSON structured like this:
 
@@ -260,7 +260,7 @@ QR-code was scanned successfuly
 
 ```
 
-### When
+#### When
 
 Device with WhatsApp application is unreachable. We can't work with whatsapp while phone is offline.
 
@@ -269,7 +269,7 @@ Device with WhatsApp application is unreachable. We can't work with whatsapp whi
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: phone online
+### Whatsapp: phone online
 
 > The above command returns JSON structured like this:
 
@@ -291,7 +291,7 @@ Device with WhatsApp application is unreachable. We can't work with whatsapp whi
 
 ```
 
-### When
+#### When
 
 Device with WhatsApp application is reachable again.
 
@@ -300,7 +300,7 @@ Device with WhatsApp application is reachable again.
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: channel not available
+### Whatsapp: channel not available
 
 > The above command returns JSON structured like this:
 
@@ -322,7 +322,7 @@ Device with WhatsApp application is reachable again.
 
 ```
 
-### When
+#### When
 
 Someone started session at [web.whatsapp.com](https://web.whatsapp.com) or user similar integration.
 We can't work with whatsapp while Whatsapp WEB is open.
@@ -332,7 +332,7 @@ We can't work with whatsapp while Whatsapp WEB is open.
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: channel disabled
+### Whatsapp: channel disabled
 
 > The above command returns JSON structured like this:
 
@@ -354,7 +354,7 @@ We can't work with whatsapp while Whatsapp WEB is open.
 
 ```
 
-### When
+#### When
 
 By some reason whatsapp session is not alive anymore (for example, user exited on the device or whatsapp expired session)
 
@@ -363,7 +363,7 @@ By some reason whatsapp session is not alive anymore (for example, user exited o
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: trying to resume channel work
+### Whatsapp: trying to resume channel work
 
 > The above command returns JSON structured like this:
 
@@ -385,7 +385,7 @@ By some reason whatsapp session is not alive anymore (for example, user exited o
 
 ```
 
-### When
+#### When
 
 We're trying to resume work after previous conflict state
 
@@ -394,7 +394,7 @@ We're trying to resume work after previous conflict state
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Whatsapp: synchronization completed
+### Whatsapp: synchronization completed
 
 > The above command returns JSON structured like this:
 
@@ -416,7 +416,7 @@ We're trying to resume work after previous conflict state
 
 ```
 
-### When
+#### When
 
   - Whatsapp channel was connected and syncronisation was completed
   - Syncronisation after work resume
@@ -426,7 +426,7 @@ We're trying to resume work after previous conflict state
 <code>timestamp</code> is callback timestamp.
 </aside>
 
-## Instagram: changed state to disabled
+### Instagram: changed state to disabled
 
 > The above command returns JSON structured like this:
 
@@ -447,13 +447,13 @@ We're trying to resume work after previous conflict state
 
 ```
 
-### When
+#### When
 
   - Service message successfully delivered
   - Service message delivery failed
 
 
-## Group chats: new conversation
+### Group chats: new conversation
 
 > The above command returns JSON structured like this:
 
@@ -477,13 +477,13 @@ We're trying to resume work after previous conflict state
 
 ```
 
-### When
+#### When
 
  - Group chat member sends new message first time.
  - You send a message to a group chat. Message was delivered, conversation was created.
 
 
-## Group chats: new group message
+### Group chats: new group message
 
 > The above command returns JSON structured like this:
 
@@ -514,13 +514,13 @@ We're trying to resume work after previous conflict state
 
 ```
 
-### When
+#### When
 
  - Group chat member sent new message.
  - You send a message to a group chat.
 
 
-## Group chats: message delivery/read status
+### Group chats: message delivery/read status
 
 > The above command returns JSON structured like this:
 
@@ -544,7 +544,7 @@ We're trying to resume work after previous conflict state
 
 ```
 
-### When
+#### When
 
  - Message was delivered
  - Message was read
@@ -557,7 +557,7 @@ Possible statuses:
   - ` 3` : Message was read
 
 
-## Group chats: new active member
+### Group chats: new active member
 
 > The above command returns JSON structured like this:
 
@@ -578,7 +578,7 @@ Possible statuses:
 
 ```
 
-### When
+#### When
 
  - Group chat member sent new message first time.
 

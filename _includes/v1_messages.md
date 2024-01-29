@@ -1,4 +1,4 @@
-# Messages
+## Messages
 
 Each message belongs to conversation. Message fields:
 
@@ -8,7 +8,7 @@ Each message belongs to conversation. Message fields:
 * income (Boolean) – whether message is income or outcome
 
 
-## Get conversation messages
+### Get conversation messages
 
 ```shell
 curl "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages"
@@ -65,11 +65,11 @@ $client->messages->getMessages(
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<CONVERSATION_ID>/messages`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -77,14 +77,14 @@ from | false | Must be a String not more than 255 symbols | Next page token gete
 per | false | Must be a number between 1 and 100 | Number of elements per page. Default: 50
 sort_direction | false | Must be a String | We sort results by created_at. Change sorting direction. Avilable values: asc, desc. Default: asc.
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 CONVERSATION_ID | ID of the conversation
 
-## Send message
+### Send message
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages"
@@ -141,18 +141,18 @@ You'll receive a webhook with the delivery status if delivery is async.
 
 You can check operation result manually here: [Jobs](#jobs)
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<CONVERSATION_ID>/messages`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 CONVERSATION_ID | ID of the conversation
 
-### Body Parameters
+#### Body Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -163,14 +163,14 @@ send_to_crm | false | boolean | Sync this message to CRM integrations. If not sp
 
 **Important**: Some messengers support only text or only attachment in one message. For example, whatsapp allows to attach a caption for an image but not allows to attach a caption to a PDF document. Multiple attachments are allowed only for vkontakte
 
-### Interactive WABA message with buttons example
+#### Interactive WABA message with buttons example
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/message"
   -H "X-Private-Api-Token: YOUR_API_TOKEN"
   -d "{ "message": "wassup", "interactive": { "type": "button", "buttons": ["fine", "awesome"] } }"
 ```
 
-## Upload attachments
+### Upload attachments
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/conversations/CONVERSATION_ID/messages/attachments"
@@ -211,18 +211,18 @@ $messages = $client->messages->sendMessage(
 
 This endpoint creates an attachment which can be sent in message.
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/conversations/<CONVERSATION_ID>/messages/attachments`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 CONVERSATION_ID | ID of the conversation
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------

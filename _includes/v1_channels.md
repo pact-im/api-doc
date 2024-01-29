@@ -1,4 +1,4 @@
-# Channels
+## Channels
 
 In order to receive and send messages, you need to connect channels.
 Channels is a source of incoming messages in the system. Channel providers:
@@ -23,7 +23,7 @@ You have to setup webhook's to make channels fully functional.
 </aside>
 
 
-## Get All channels
+### Get All channels
 
 ```shell
 curl "https://api.pact.im/p1/companies/COMPANY_ID/channels"
@@ -69,11 +69,11 @@ $client->channels->getChannels($companyId,
 
 This endpoint returns all the company channels.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/channels`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -81,13 +81,13 @@ from | false | Must be a String not more than 255 symbols | Next page token gete
 per | false | Must be a number between 1 and 100 | Number of elements per page. Default: 50
 sort_direction | false | Must be a String | We sort results by id. Change sorting direction. Avilable values: asc, desc. Default: asc.
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 
-## Create new channel
+### Create new channel
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels"
@@ -220,19 +220,19 @@ You can connect only one channel per one company for each provider.
 Contact with support if you want to use more than one channel
 </aside>
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 
-### Query Parameters
+#### Query Parameters
 
-#### Create whatsapp channel
+##### Create whatsapp channel
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -244,7 +244,7 @@ You will get QR-code webhook after this action. This QR-code must be scanned on 
 If you can't do this - try to connect Whatsapp via our web interface.
 </aside>
 
-#### Create whatsapp business channel (dialog360 by token)
+##### Create whatsapp business channel (dialog360 by token)
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -253,7 +253,7 @@ hosting_type | true | Must be a `cloud`, `onpremise` | Hosting platform type
 token | true | Must be a String | Token for auth.
 subtype | false | Must be a `regular`, `unlim`, `no_write_first` | Tarif name
 
-#### Create whatsapp business channel (dialog360 by channel_id)
+##### Create whatsapp business channel (dialog360 by channel_id)
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -264,7 +264,7 @@ dialog360_client_id | false | Must be a String | client_id for auth
 account_name | false | Must be a String | Account name for waba profile
 subtype | false | Must be a `regular`, `unlim`, `no_write_first` | Tarif name
 
-#### Create avito channel
+##### Create avito channel
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -272,7 +272,7 @@ provider | true | Must be `avito` |
 login | true | Must be a String | avito client_id
 password | true | Must be a String | avito client secret
 
-#### Create instagram business channel
+##### Create instagram business channel
 
 Steps:
 1. It is necessary to follow the instructions for Facebook until you receive the [token](https://developers.facebook.com/docs/instagram/business-login-for-instagram#step-3--capture-user-access-token).
@@ -305,14 +305,14 @@ data | true | Hash   | Data from Instagram that was transferred to redirect_url
 phone | true | String | User phone
 token | true | String | Instagram token
 
-#### Create facebook/vkontakte/vkontakte_direct/telegram/viber channel
+##### Create facebook/vkontakte/vkontakte_direct/telegram/viber channel
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be one of: `facebook`, `vkontakte`, `vkontakte_direct`, `telegram`, `viber` | Shows which provider you want to connect
 token | true | Must be a String | Token for auth.
 
-#### Create telegram personal channel (by qr code)
+##### Create telegram personal channel (by qr code)
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -326,7 +326,7 @@ If you can't do this - try to connect Telegram via our web interface.
 </aside>
 
 
-#### Create telegram personal channel (by digital code)
+##### Create telegram personal channel (by digital code)
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -345,7 +345,7 @@ After you have created a telegram channel. You must request a confirmation code 
 2. Open "API usage" (https://vk.com/public<GROUP_ID>?act=tokens)
 3. Create and copy new token
 
-## Update channel
+### Update channel
 
 ```shell
 curl -X PUT "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
@@ -445,26 +445,26 @@ $client->channels->updateChannelToken(
 
 This endpoint updates existing channel in the company.
 
-### HTTP Request
+#### HTTP Request
 
 `PUT https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel
 
-### Query Parameters
+#### Query Parameters
 
-#### For facebook/vkontakte/vkontakte_direct/telegram/viber/instagram_business channels
+##### For facebook/vkontakte/vkontakte_direct/telegram/viber/instagram_business channels
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 token | true | Must be a String | ...
 
-## Delete channel
+### Delete channel
 
 ```shell
 curl -X DELETE "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID"
@@ -494,18 +494,18 @@ $client->chanells->deleteChannel($companyId, $channelId);
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `DELETE https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel for disable
 
-## How to write first message to Whatsapp
+### How to write first message to Whatsapp
 
 <aside class="notice">
   Whatsapp requires using this method to write the first message.
@@ -561,7 +561,7 @@ $client->channels->sendFirstWhatsAppMessage(
 }
 ```
 
-## How to check if user has Whatsapp account
+### How to check if user has Whatsapp account
 
 
 ```shell
@@ -578,7 +578,7 @@ curl -X GET "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/user_exists
 }
 ```
 
-## How to write first message to Whatsapp Business
+### How to write first message to Whatsapp Business
 
 ```shell
 curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/conversations"
@@ -622,18 +622,18 @@ You can also poll delivery status here: [Jobs](#jobs)
 Whatsapp business requires using this method to write the first message.
 </aside>
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/conversations`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -641,7 +641,7 @@ phone | true | Must be in format `79250000001` | Contact phone number
 message | false | Must be String | Message text. For regular Whatsapp channel only
 template | false | Must be Object | Template data. For Whatsapp Business channel only
 
-### Whatsapp Business Template Parameters
+#### Whatsapp Business Template Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -649,7 +649,7 @@ id | true | Must be String | ID of registered template
 language_code | true | Must be String | Language code of registered template (`'en'`, `'ru'`, etc)
 parameters | true | Must be Array | Template substitution parameters
 
-## Request code (telegram personal)
+### Request code (telegram personal)
 
 > Request code:
 
@@ -697,26 +697,26 @@ $client->channels->requestChannelCode(
 
 This endpoint request code for telegram personal
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/request_code`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel
 
-### Query Parameters
+#### Query Parameters
 
-#### Request challenge code
+##### Request challenge code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
 provider | true | Must be `telegram_personal` |
 
-## Confirm code (telegram personal)
+### Confirm code (telegram personal)
 
 > Confirmation type is code
 
@@ -804,20 +804,20 @@ $client->channels->confirmChannelCode(
 
 This endpoint confirm telegram personal channel with two types: code, password
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/confirm`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel
 
-### Query Parameters
+#### Query Parameters
 
-#### Confirmation type is code
+##### Confirmation type is code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
@@ -825,7 +825,7 @@ provider | true | Must be `telegram_personal` |
 confirmation_type | true | Must be `code` |
 code | true | Must be a Number | Example: `1234`
 
-#### Confirmation type is password
+##### Confirmation type is password
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
@@ -833,7 +833,7 @@ provider | true | Must be `telegram_personal` |
 confirmation_type | true | Must be `password` |
 password | true | Must be a String | Example: `qwerty123`
 
-## Request code (instagram only)
+### Request code (instagram only)
 
 > Request challenge code:
 
@@ -915,34 +915,34 @@ $client->channels->requestChannelCode(
 
 This endpoint request challenge or two factor authentication code.
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/request_code`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel
 
-### Query Parameters
+#### Query Parameters
 
-#### Request challenge code
+##### Request challenge code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
 provider | true | Must be `instagram` |
 challenge_variant | true | |
 
-#### Request two factor SMS authentication code
+##### Request two factor SMS authentication code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `instagram` |
 challenge_type | true | Must be `two_factor` |
 
-## Confirm code (instagram only)
+### Confirm code (instagram only)
 
 > Confirm challenge code:
 
@@ -1059,27 +1059,27 @@ $client->channels->confirmChannelCode(
 
 This endpoint submit challenge or two factor authentication code.
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<ID>/confirm`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 COMPANY_ID | ID of the company
 ID | ID of the channel
 
-### Query Parameters
+#### Query Parameters
 
-#### challenge code
+##### challenge code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |
 provider | true | Must be `instagram` |
 confirmation_code | true | Must be a String |
 
-#### two factor authentication code
+##### two factor authentication code
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- |

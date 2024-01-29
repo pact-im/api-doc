@@ -1,7 +1,8 @@
-# Authentication
+## Authentication
 
-All requests to Pact API must be authenticated. There are two options
-for autentication:
+All requests to Pact API must be authenticated.
+
+There are two options for autentication:
 
 Pact expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -22,7 +23,7 @@ You must use personal API key on each request to the API.
 You can get your Pact API key from [account settings page](https://app.pact.im/account).
 
 
-## Examples
+### Examples
 
 ```shell
 # Header
@@ -38,4 +39,3 @@ curl -X GET "API_ENDPOINT_HERE?private_api_token=YOUR_API_TOKEN"
 $token = '<your super secret token>';
 $pact = new \Pact\PactClient($token);
 ```
-

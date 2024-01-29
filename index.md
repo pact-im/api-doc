@@ -11,14 +11,17 @@ toc_footers:
 
 includes:
   - intro
-  - authentication
-  - companies
-  - channels
-  - conversations
-  - messages
-  - waba_templates
-  - webhooks
-  - jobs
+  - v1
+  - v1_authentication
+  - v1_companies
+  - v1_channels
+  - v1_conversations
+  - v1_messages
+  - v1_waba_templates
+  - v1_webhooks
+  - v1_jobs
+  - v2
+  - v2_authentication
   - errors
   - terms
   - legal
