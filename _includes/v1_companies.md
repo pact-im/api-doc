@@ -1,11 +1,11 @@
-# Companies
+## Companies
 
 <aside class="notice">
 Each user has many companies. Each user must have at least one company
 in the system.
 </aside>
 
-## Get All Companies
+### Get All Companies
 
 ```shell
 curl "https://api.pact.im/p1/companies"
@@ -57,11 +57,11 @@ $client->companies->getCompanies($from, $per, $sort)
 
 This endpoint return list of all user companies.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -69,7 +69,7 @@ from | false | Must be a String not more than 255 symbols | Next page token gete
 per | false | Must be a number between 1 and 100 | Number of elements per page. Default: 50
 sort_direction | false | Must be a String | We sort results by id. Change sorting direction. Avilable values: asc, desc. Default: asc.
 
-## Update company
+### Update company
 
 ```shell
 curl -X PUT "https://api.pact.im/p1/companies/ID"
@@ -112,17 +112,17 @@ $client->companies->updateCompany($companyId,
 
 This endpoint updates specific company attributes.
 
-### HTTP Request
+#### HTTP Request
 
 `PUT https://api.pact.im/p1/companies/<ID>`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
 ID | ID of the company for update
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -137,7 +137,7 @@ If you want to receive <code>webhooks</code> make sure that <code>webhook_url</c
 </aside>
 
 
-## Create new company
+### Create new company
 
 
 ```shell
@@ -179,11 +179,11 @@ $client->companies->createCompany($name,
 
 This endpoint creates a new company for user.
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.pact.im/p1/companies`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------

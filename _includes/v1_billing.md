@@ -1,6 +1,6 @@
-# Billing
+## Billing
 
-## Account Information
+### Account Information
 
 ```shell
 curl "https://api.pact.im/p1/billing"
@@ -42,7 +42,7 @@ Response contains information about which channels you used and how much it cost
 This endpoint is intended for partners and will NOT be used by other companies.
 </aside>
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/billing`
 

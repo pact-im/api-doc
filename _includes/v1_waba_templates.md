@@ -1,8 +1,8 @@
-# Waba templates
+## Waba templates
 
 A company with a whatsapp_business channel can have waba templates
 
-## Get waba templates
+### Get waba templates
 
 ```shell
 curl "https://api.pact.im/p1/companies/COMPANY_ID/waba_templates"
@@ -61,11 +61,11 @@ $client->companies->getWabaTemplates(
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/waba_templates`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
@@ -73,7 +73,7 @@ from | false | Must be a String not more than 255 symbols | Next page token gete
 per | false | Must be a number between 1 and 100 | Number of elements per page. Default: 50
 sort_direction | false | Must be a String | We sort results by created_at. Change sorting direction. Avilable values: asc, desc. Default: asc.
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------

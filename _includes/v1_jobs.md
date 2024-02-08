@@ -1,6 +1,6 @@
-# Message delivery Jobs
+## Message delivery Jobs
 
-## Get Job details
+### Get Job details
 
 ```shell
 curl "https://api.pact.im/p1/companies/COMPANY_ID/channels/<CHANNEL_ID>/jobs/<ID>"
@@ -52,11 +52,11 @@ $client->jobs->getJob(
 
 This endpoint returns information about message delivery job
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.pact.im/p1/companies/<COMPANY_ID>/channels/<CHANNEL_ID>/jobs/<ID>`
 
-### URL Parameters
+#### URL Parameters
 
 Parameter | Description
 --------- | -----------
