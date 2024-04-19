@@ -157,7 +157,7 @@ CONVERSATION_ID | ID of the conversation
 Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 message | false | Must be String | Message text
-attachments_ids | false | Must be an Array with attachments ids | IDs of previously uploaded attachments.
+attachment_ids | false | Must be an Array with attachments ids | IDs of previously uploaded attachments.
 interactive | false | object | Interactive message configuration (only WABA channel)
 send_to_crm | false | boolean | Sync this message to CRM integrations. If not specified the default value is 'true'
 
