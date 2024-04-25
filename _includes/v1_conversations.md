@@ -413,9 +413,10 @@ ID | ID of the conversation
 #### Query Parameters
 
 Parameter | Required | Validations | Description
---------- | -------- | ----------- | -----------
+--------- | -------- |---------| -----------
 file | false | Must be a file | Uploaded file
 file_url | false | Must be a file url | File url
+push_to_talk | false | Boolean | To send audio files as voice messages
 
 <aside class="notice">
 Whatsapp requires using this method with existing whatsapp business template
