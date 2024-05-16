@@ -417,6 +417,7 @@ Parameter | Required | Validations | Description
 file | false | Must be a file | Uploaded file
 file_url | false | Must be a file url | File url
 push_to_talk | false | Boolean | To send audio files as voice messages
+metadata: {"data":{"width": integer, "height": integer}} | false | Json | Determine the size of attachments (image, video) in the mobile version
 
 <aside class="notice">
 Whatsapp requires using this method with existing whatsapp business template
