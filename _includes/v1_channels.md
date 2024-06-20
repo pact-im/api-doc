@@ -145,7 +145,8 @@ $client->channels->createChannelUnified($companyId,
 $client->channels->createChannelWhatsApp(
   $companyId,
   $syncMessagesFrom,
-  $doNotMarkAsRead
+  $doNotMarkAsRead,
+  $phone
 );
 ```
 
@@ -238,6 +239,7 @@ Parameter | Required | Validations | Description
 --------- | -------- | ----------- | -----------
 provider | true | Must be `whatsapp`
 sync_messages_from | false | timestamp | Only messages created after `sync_messages_from` will be synchronized. Not older than one month.
+phone | true | string 
 
 <aside class="notice">
 You will get QR-code webhook after this action. This QR-code must be scanned on mobile device to authorize Pact.im.
@@ -648,6 +650,52 @@ Parameter | Required | Validations | Description
 id | true | Must be String | ID of registered template
 language_code | true | Must be String | Language code of registered template (`'en'`, `'ru'`, etc)
 parameters | true | Must be Array | Template substitution parameters
+
+### Request code (whatsapp)
+
+> Request code:
+
+```shell
+curl -X POST "https://api.pact.im/p1/companies/COMPANY_ID/channels/ID/request_code"
+  -H "X-Private-Api-Token: YOUR_API_TOKEN"
+  -d "provider=whatsapp"
+```
+
+```php
+<?php
+
+/**
+ * @link https://pact-im.github.io/api-doc/#request-code-whatsapp
+ *
+ * @param int $companyId Id of the compnay
+ * @param int $channelId Id of the channel
+ * @param array $parameters
+ * @return Json|null
+ */
+
+$parameters = [
+  'provider' => 'whatsapp'
+];
+
+$client->channels->requestChannelCode(
+  $companyId,
+  $channelId,
+  $parameters
+);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+   "sessionId": "1426",
+   "code": "ZHHJ-KQSP",
+   "ttl": "160s"
+}
+```
+
+In the WhatsApp mobile application, you will receive a notification asking you to insert an authorization code.
+Enter the value "code" there
 
 ### Request code (telegram personal)
 
