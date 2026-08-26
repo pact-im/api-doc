@@ -1,135 +1,114 @@
-# Slate for Jekyll
+# Pact API Docs
 
-Beautiful static documentation for your API, built with Jekyll and compatible with GitHub Pages.
+Next.js documentation site for the Pact API, built with Markdown and shadcn/ui.
 
-## Quick Start
+## Development
 
-```shell
-# Fork and clone this repository
-git clone https://github.com/<your-user>/slate-for-jekyll
-cd slate-for-jekyll
-
-# Install dependencies
-bundle install
-
-# Complie assets
-bundle exec jekyll build
-
-# Run locally
-bundle exec jekyll serve
+```bash
+npm install
+npm run generate:ai
+npm run dev
 ```
 
-## GitHub Pages
+Open [http://localhost:3000/](http://localhost:3000/).
 
-Not only can you host the source code on GitHub and the generated HTML on GitHub Pages as you would with Slate, but now, you can have GitHub build your documentation site as well. Slate for Jekyll replaces the site generator used in Slate (Middleman) with Jekyll, a similar site generator that GitHub Pages can build and run natively.
+## Content
 
-## Original README contents
+Docs are Markdown files under two locale trees:
 
+| Locale | Source | Site URL |
+| --- | --- | --- |
+| Russian (default) | [`content/ru/`](content/ru) | `/…` |
+| English | [`content/en/`](content/en) | `/en/…` |
+
+The language switcher in the top bar maps the same path between locales (for example `/v2/messages` ↔ `/en/v2/messages`).
+
+**Keep both locales in sync.** Every page should exist in `content/ru/` and `content/en/` with the same relative path and the same frontmatter `title` / `description` translated.
+
+### File → URL
+
+Path under `content/{locale}/` maps to the URL (Russian unprefixed, English under `/en`):
+
+| File | RU URL | EN URL |
+| --- | --- | --- |
+| `content/ru/index.md` | `/` | — |
+| `content/en/index.md` | — | `/en/` |
+| `content/ru/v2/messages/send-message.md` | `/v2/messages/send-message/` | `/en/v2/messages/send-message/` |
+| `content/ru/embed/overview.md` | `/embed/overview/` | `/en/embed/overview/` |
+
+Use a folder + `index.md` only when you need a section index at that folder path (for example `content/ru/v2/messages/index.md` → `/v2/messages/`).
+
+### Frontmatter
+
+```yaml
 ---
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
-  <br>
-  <a href="https://travis-ci.org/lord/slate"><img src="https://travis-ci.org/lord/slate.svg?branch=master" alt="Build Status"></a>
-</p>
-
-<p align="center">Slate helps you create beautiful, intelligent, responsive API documentation.</p>
-
-<p align="center"><img src="https://dl.dropboxusercontent.com/u/95847291/github%20images/slate/slate_screenshot_new.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
-
-<p align="center"><em>The example above was created with Slate. Check it out at <a href="https://lord.github.io/slate">lord.github.io/slate</a>.</em></p>
-
-Features
-------------
-
-* **Clean, intuitive design** — With Slate, the description of your API is on the left side of your documentation, and all the code examples are on the right side. Inspired by [Stripe's](https://stripe.com/docs/api) and [Paypal's](https://developer.paypal.com/webapps/developer/docs/api/) API docs. Slate is responsive, so it looks great on tablets, phones, and even in print.
-
-* **Everything on a single page** — Gone are the days when your users had to search through a million pages to find what they wanted. Slate puts the entire documentation on a single page. We haven't sacrificed linkability, though. As you scroll, your browser's hash will update to the nearest header, so linking to a particular point in the documentation is still natural and easy.
-
-* **Slate is just Markdown** — When you write docs with Slate, you're just writing Markdown, which makes it simple to edit and understand. Everything is written in Markdown — even the code samples are just Markdown code blocks.
-
-* **Write code samples in multiple languages** — If your API has bindings in multiple programming languages, you can easily put in tabs to switch between them. In your document, you'll distinguish different languages by specifying the language name at the top of each code block, just like with Github Flavored Markdown.
-
-* **Out-of-the-box syntax highlighting** for [almost 100 languages](http://rouge.jneen.net/), no configuration required.
-
-* **Automatic, smoothly scrolling table of contents** on the far left of the page. As you scroll, it displays your current position in the document. It's fast, too. We're using Slate at TripIt to build documentation for our new API, where our table of contents has over 180 entries. We've made sure that the performance remains excellent, even for larger documents.
-
-* **Let your users update your documentation for you** — By default, your Slate-generated documentation is hosted in a public Github repository. Not only does this mean you get free hosting for your docs with Github Pages, but it also makes it simple for other developers to make pull requests to your docs if they find typos or other problems. Of course, if you don't want to use GitHub, you're also welcome to host your docs elsewhere.
-
-Getting started with Slate is super easy! Simply fork this repository and follow the instructions below. Or, if you'd like to check out what Slate is capable of, take a look at the [sample docs](http://lord.github.io/slate).
-
-Getting Started with Slate
-------------------------------
-
-### Prerequisites
-
-You're going to need:
-
- - **Linux or OS X** — Windows may work, but is unsupported.
- - **Ruby, version 2.0 or newer**
- - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
-
-### Getting Set Up
-
-1. Fork this repository on Github.
-2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/slate.git`
-3. `cd slate`
-4. Initialize and start Slate. You can either do this locally, or with Vagrant:
-
-```shell
-# either run this to run locally
-bundle install
-bundle exec middleman server
-
-# OR run this to run with vagrant
-vagrant up
+title: "Send a message"
+description: "Send a message to an existing conversation"
+section: "v2"
+---
 ```
 
-You can now see the docs at http://localhost:4567. Whoa! That was fast!
+- `title` — page H1 and sidebar / prev-next label source when used with nav
+- `description` — subtitle under the H1
+- `section` — optional grouping hint (for example `v2`, `embed`)
 
-Now that Slate is all set up your machine, you'll probably want to learn more about [editing Slate markdown](https://github.com/lord/slate/wiki/Markdown-Syntax), or [how to publish your docs](https://github.com/lord/slate/wiki/Deploying-Slate).
+### Edit an existing page
 
-If you'd prefer to use Docker, instructions are available [in the wiki](https://github.com/lord/slate/wiki/Docker).
+1. Change the Markdown in **both** `content/ru/…` and `content/en/…`.
+2. Use locale-neutral internal links: `[Send message](/v2/messages/send-message)` — the site prefixes `/en` automatically for English.
+3. Run `npm run generate:ai` (also runs on `npm run build`) so `public/docs/**` and `public/llms.txt` stay in sync.
+4. Check the page in the browser for RU and EN.
 
-Companies Using Slate
----------------------------------
+### Add a new page
 
-* [NASA](https://api.nasa.gov)
-* [IBM Cloudant](https://docs.cloudant.com/api.html)
-* [Travis-CI](https://docs.travis-ci.com/api/)
-* [Mozilla](http://mozilla.github.io/localForage/)
-* [Appium](http://appium.io/slate/en/master)
-* [Dwolla](https://docs.dwolla.com/)
-* [Clearbit](https://clearbit.com/docs)
-* [Coinbase](https://developers.coinbase.com/api)
-* [Parrot Drones](http://developer.parrot.com/docs/bebop/)
-* [Fidor Bank](http://docs.fidor.de/)
+1. Create matching files, for example:
+   - `content/ru/v2/messages/my-endpoint.md`
+   - `content/en/v2/messages/my-endpoint.md`
+2. Fill frontmatter and body in both languages.
+3. Register the page in the sidebar in [`lib/nav.ts`](lib/nav.ts) (see below).
+4. Run `npm run generate:ai` and open `/v2/messages/my-endpoint/` and `/en/v2/messages/my-endpoint/`.
 
-You can view more in [the list on the wiki](https://github.com/lord/slate/wiki/Slate-in-the-Wild).
+### Add or change a sidebar section
 
-Need Help? Found a bug?
---------------------
+Navigation is defined once in [`lib/nav.ts`](lib/nav.ts) as `navSectionDefs`. Each section and item has `ru` / `en` titles and a shared unprefixed `href`:
 
-[Submit an issue](https://github.com/lord/slate/issues) to the Slate Github if you need any help. And, of course, feel free to submit pull requests with bug fixes or changes.
+```ts
+{
+  title: { ru: "Сообщения", en: "Messages" },
+  href: "/v2/messages",
+  items: [
+    {
+      title: { ru: "Отправить сообщение", en: "Send a message" },
+      href: "/v2/messages/send-message",
+    },
+  ],
+},
+```
 
-Contributors
---------------------
+- Top-level `title` on a section is the sidebar group label.
+- Nested `items` become expandable children.
+- Optional flags: `deprecated: true`, `external: true` (non-doc link such as `/llms.txt`). HTTP method badges are filled automatically from a page’s `## HTTP Request` block when present.
+- After changing nav or content, restart or refresh `npm run dev` if the sidebar looks stale.
 
-Slate was built by [Robert Lord](https://lord.io) while interning at [TripIt](https://www.tripit.com/).
+### Markdown extras
 
-Thanks to the following people who have submitted major pull requests:
+- **Callouts:** `> **Note:** …`, `> **Warning:** …`, `> **Success:** …` (Russian labels `Заметка` / `Внимание` / `Готово` also work).
+- **Code tabs:** consecutive fenced blocks in tabbable languages (for example `shell` + `php`, or `js` / `python` / `php` / `ruby`) are merged into a tabbed code block.
+- **HTTP Request:** a single `## HTTP Request` section with `` `METHOD url` `` is lifted into the page header badge.
+- **Anchors:** optional `{#custom-id}` on headings for stable fragment links across locales.
 
-- [@chrissrogers](https://github.com/chrissrogers)
-- [@bootstraponline](https://github.com/bootstraponline)
-- [@realityking](https://github.com/realityking)
-- [@cvkef](https://github.com/cvkef)
+## AI-ready
 
-Also, thanks to [Sauce Labs](http://saucelabs.com) for helping sponsor the project.
+- **Copy page** / **View as Markdown** on every docs page
+- Raw Markdown mirrored under `/docs/**/*.md` (RU) and `/docs/en/**/*.md` (EN)
+- Catalog at [`/llms.txt`](public/llms.txt) (generated by `npm run generate:ai` / build)
 
-Special Thanks
---------------------
-- [Middleman](https://github.com/middleman/middleman)
-- [jquery.tocify.js](https://github.com/gfranko/jquery.tocify.js)
-- [middleman-syntax](https://github.com/middleman/middleman-syntax)
-- [middleman-gh-pages](https://github.com/edgecase/middleman-gh-pages)
-- [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+## Deploy (GitHub Pages)
+
+Push to `gh-pages`. The workflow sets:
+
+```text
+NEXT_PUBLIC_BASE_PATH=/${{ github.event.repository.name }}
+```
+
+That publishes to [https://pact-im.github.io/api-doc/](https://pact-im.github.io/api-doc/). After the first Actions deploy, set Pages source to **GitHub Actions**.

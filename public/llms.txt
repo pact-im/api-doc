@@ -1,0 +1,102 @@
+# Pact.im API
+
+> Pact.im API documentation / Документация Pact.im API. Integrate WhatsApp, Telegram, Instagram, MAX, VK, Avito, and more into your product.
+
+## Docs (ru)
+
+- [Вставка iframe](https://pact-im.github.io/docs/embed/iframe.md): Как разместить интерфейс чата Pact в вашем продукте через HTML iframe
+- [Как разместить интерфейс чата Pact в вашем продукте](https://pact-im.github.io/docs/embed/overview.md): Как показать интерфейс чата Pact.im в вашей CRM или другом веб-приложении через iframe
+- [Дополнительные параметры](https://pact-im.github.io/docs/embed/parameters.md): Опциональные параметры ссылки: scope, диалог, телефон, провайдер и оператор
+- [Формирование ссылки и подписи](https://pact-im.github.io/docs/embed/signature.md): Обязательные параметры ссылки на интерфейс чата и генерация HMAC-SHA512 подписи
+- [Ошибки](https://pact-im.github.io/docs/errors.md): HTTP-коды ошибок, которые возвращает API Pact
+- [Введение](https://pact-im.github.io/docs/index.md): Добро пожаловать в API Pact.im — подключайте WhatsApp, Telegram, Instagram и другие каналы к своему продукту
+- [Переход с API v1 на API v2 для Каналов](https://pact-im.github.io/docs/migrate-channels-to-auths.md): Переход с каналов Channels API v1 на каналы Auths API v2 и связанные вебхуки
+- [Партнерская программа](https://pact-im.github.io/docs/partners-program.md): Готовое API для MAX, WhatsApp, Telegram, VK и других каналов: расширяйте продукт и зарабатывайте на подключениях
+- [Аутентификация](https://pact-im.github.io/docs/v1/authentication.md): Аутентификация запросов к API Pact v1
+- [Каналы](https://pact-im.github.io/docs/v1/channels.md): Подключение каналов сообщений и управление ими
+- [Компании](https://pact-im.github.io/docs/v1/companies.md): Управление компаниями в API Pact v1
+- [Вебхуки](https://pact-im.github.io/docs/v1/webhooks.md): Настройка и приём вебхуков каналов в v1
+- [Вложения](https://pact-im.github.io/docs/v2/attachments/index.md): Вложение — это файл, который вы загружаете один раз и затем отправляете в сообщении
+- [Загрузить вложение](https://pact-im.github.io/docs/v2/attachments/upload-attachment.md): Загрузка файла или ссылки на файл для отправки в сообщениях
+- [Аутентификация](https://pact-im.github.io/docs/v2/authentication-v1.md): Аутентификация запросов к API v2 с помощью приватного API-токена
+- [Подтвердить канал](https://pact-im.github.io/docs/v2/auths/confirm-auth.md): Завершение аутентификации у провайдера после создания канала — по QR-коду, коду подтверждения или через OAuth
+- [Создать канал](https://pact-im.github.io/docs/v2/auths/create-auth.md): Создание нового канала для провайдера мессенджера
+- [Удалить канал](https://pact-im.github.io/docs/v2/auths/delete-auth.md): Безвозвратное удаление канала провайдера мессенджера
+- [Отключить канал](https://pact-im.github.io/docs/v2/auths/disable-auth.md): Отключение существующего канала провайдера мессенджера
+- [Включить канал](https://pact-im.github.io/docs/v2/auths/enable-auth.md): Включение существующего канала провайдера мессенджера
+- [Каналы (несколько компаний)](https://pact-im.github.io/docs/v2/auths/get-auths.md): Возвращает каналы нескольких компаний
+- [Каналы компании](https://pact-im.github.io/docs/v2/auths/get-company-auths.md): Возвращает все каналы компании
+- [Каналы](https://pact-im.github.io/docs/v2/auths/index.md): Канал — подключённый аккаунт мессенджера (WhatsApp, Telegram, VK и другие) для вашей компании
+- [Создать вебхук](https://pact-im.github.io/docs/v2/company-webhooks/create-webhook.md): Создание нового вебхука компании (по умолчанию неактивного)
+- [Удалить вебхук](https://pact-im.github.io/docs/v2/company-webhooks/delete-webhook.md): Удаление вебхука компании
+- [Список вебхуков компании](https://pact-im.github.io/docs/v2/company-webhooks/get-company-webhooks.md): Возвращает постраничный список вебхуков компании
+- [Вебхуки компании](https://pact-im.github.io/docs/v2/company-webhooks/index.md): Вебхук компании — URL, на который Pact.im отправляет события этой компании в реальном времени
+- [Обновить вебхук](https://pact-im.github.io/docs/v2/company-webhooks/update-webhook.md): Обновление существующего вебхука компании
+- [Получить диалог](https://pact-im.github.io/docs/v2/conversations/get-conversation.md): Возвращает один диалог по идентификатору
+- [Список диалогов](https://pact-im.github.io/docs/v2/conversations/get-conversations.md): Возвращает постраничный список диалогов компании
+- [Диалоги](https://pact-im.github.io/docs/v2/conversations/index.md): Диалог — это переписка между вашей компанией и клиентом в подключённом мессенджере
+- [Обновить диалог](https://pact-im.github.io/docs/v2/conversations/update-conversation.md): Изменение статуса диалога, архивация и назначение ответственного
+- [Написать первое сообщение](https://pact-im.github.io/docs/v2/conversations/write-first-message.md): Отправка сообщения, когда диалога с получателем ещё нет
+- [Удалить сообщение](https://pact-im.github.io/docs/v2/messages/delete-message.md): Удаление сообщений из диалога
+- [Сообщение диалога](https://pact-im.github.io/docs/v2/messages/get-conversation-message.md): Возвращает одно сообщение диалога по идентификатору
+- [Сообщения диалога](https://pact-im.github.io/docs/v2/messages/get-conversation-messages.md): Возвращает постраничный список сообщений диалога
+- [Сообщения](https://pact-im.github.io/docs/v2/messages/index.md): Сообщение — это отдельный текст или медиафайл внутри диалога между вашей компанией и клиентом
+- [Отправить сообщение](https://pact-im.github.io/docs/v2/messages/send-message.md): Отправка сообщения в существующий диалог
+- [Пагинация](https://pact-im.github.io/docs/v2/pagination.md): Постраничный вывод в списочных методах API v2
+- [Лимиты запросов](https://pact-im.github.io/docs/v2/rate-limits.md): Ограничения на частоту запросов к API v2
+- [Получить WABA-шаблоны](https://pact-im.github.io/docs/v2/waba-templates/get-waba-templates.md): Возвращает постраничный список WABA-шаблонов ваших компаний
+- [WABA-шаблоны](https://pact-im.github.io/docs/v2/waba-templates/index.md): WABA-шаблон — одобренный шаблон WhatsApp Business, который можно отправить как первое исходящее сообщение
+- [События каналов](https://pact-im.github.io/docs/v2/webhooks/auth-events.md): Структура вебхуков для событий создания, обновления и удаления каналов
+- [События диалогов](https://pact-im.github.io/docs/v2/webhooks/conversation-events.md): Структура вебхуков для событий создания, обновления и удаления диалогов
+- [События](https://pact-im.github.io/docs/v2/webhooks/index.md): Обзор форматов и доставки вебхуков API v2
+- [События сообщений](https://pact-im.github.io/docs/v2/webhooks/message-events.md): Структура вебхуков для событий создания и обновления сообщений
+
+## Docs (en)
+
+- [Add iframe](https://pact-im.github.io/docs/en/embed/iframe.md): How to place the Pact chat UI in your product with an HTML iframe
+- [How to place the Pact chat UI in your product](https://pact-im.github.io/docs/en/embed/overview.md): How to show the Pact.im chat UI in your CRM or another web app with an iframe
+- [Optional parameters](https://pact-im.github.io/docs/en/embed/parameters.md): Optional URL parameters: scope, conversation, phone, provider, and operator
+- [Build URL and signature](https://pact-im.github.io/docs/en/embed/signature.md): Required chat UI URL parameters and HMAC-SHA512 signature generation
+- [Errors](https://pact-im.github.io/docs/en/errors.md): HTTP error codes returned by the Pact API
+- [Introduction](https://pact-im.github.io/docs/en/index.md): Welcome to the Pact.im API — integrate WhatsApp, Telegram, Instagram, and more into your product
+- [Migration from Channels v1 to Auths v2](https://pact-im.github.io/docs/en/migrate-channels-to-auths.md): Move from API v1 Channels to API v2 Auths and auth webhooks
+- [Partner Program](https://pact-im.github.io/docs/en/partners-program.md): A ready-made API for MAX, WhatsApp, Telegram, VK, and more: expand your product and earn from channel connections
+- [Authentication](https://pact-im.github.io/docs/en/v1/authentication.md): Authenticate requests to Pact API v1
+- [Channels](https://pact-im.github.io/docs/en/v1/channels.md): Connect and manage messaging channels
+- [Companies](https://pact-im.github.io/docs/en/v1/companies.md): Manage companies in Pact API v1
+- [Webhooks](https://pact-im.github.io/docs/en/v1/webhooks.md): Configure and receive v1 channel webhooks
+- [Attachments](https://pact-im.github.io/docs/en/v2/attachments/index.md): An attachment is a file you upload once and then send inside a message
+- [Upload Attachment](https://pact-im.github.io/docs/en/v2/attachments/upload-attachment.md): Upload a file or file URL to use in messages
+- [Authentication](https://pact-im.github.io/docs/en/v2/authentication-v1.md): Authenticate API v2 requests with a private API token
+- [Confirm auth](https://pact-im.github.io/docs/en/v2/auths/confirm-auth.md): Complete provider authentication after creating an auth — via QR code, verification code, or OAuth
+- [Create Auth](https://pact-im.github.io/docs/en/v2/auths/create-auth.md): Create a new authentication for a messaging provider
+- [Delete Auth](https://pact-im.github.io/docs/en/v2/auths/delete-auth.md): Permanently delete a messaging provider auth
+- [Disable Auth](https://pact-im.github.io/docs/en/v2/auths/disable-auth.md): Disable an existing messaging provider auth
+- [Enable Auth](https://pact-im.github.io/docs/en/v2/auths/enable-auth.md): Enable an existing messaging provider auth
+- [Get Auths (Multi-company)](https://pact-im.github.io/docs/en/v2/auths/get-auths.md): Returns auths for multiple companies
+- [Get Company Auths](https://pact-im.github.io/docs/en/v2/auths/get-company-auths.md): Returns all auths for a company
+- [Auths](https://pact-im.github.io/docs/en/v2/auths/index.md): An auth is a connected messaging account — WhatsApp, Telegram, VK, and more — for your company
+- [Create Webhook](https://pact-im.github.io/docs/en/v2/company-webhooks/create-webhook.md): Create a new company webhook (inactive by default)
+- [Delete Webhook](https://pact-im.github.io/docs/en/v2/company-webhooks/delete-webhook.md): Delete a company webhook
+- [Get Company Webhooks](https://pact-im.github.io/docs/en/v2/company-webhooks/get-company-webhooks.md): Returns a paginated list of webhooks for the company
+- [Company webhooks](https://pact-im.github.io/docs/en/v2/company-webhooks/index.md): A company webhook is a URL where Pact.im sends real-time events for that company
+- [Update Webhook](https://pact-im.github.io/docs/en/v2/company-webhooks/update-webhook.md): Update an existing company webhook
+- [Get Conversation](https://pact-im.github.io/docs/en/v2/conversations/get-conversation.md): Returns a single conversation by ID
+- [Get Conversations](https://pact-im.github.io/docs/en/v2/conversations/get-conversations.md): Returns a paginated list of company conversations
+- [Conversations](https://pact-im.github.io/docs/en/v2/conversations/index.md): A conversation is a chat between your company and a client in a connected messenger
+- [Update Conversation](https://pact-im.github.io/docs/en/v2/conversations/update-conversation.md): Update conversation status, archive state, or assignee
+- [Write First Message](https://pact-im.github.io/docs/en/v2/conversations/write-first-message.md): Send a message when no conversation with the recipient exists
+- [Delete Message](https://pact-im.github.io/docs/en/v2/messages/delete-message.md): Delete messages from a conversation
+- [Get Conversation Message](https://pact-im.github.io/docs/en/v2/messages/get-conversation-message.md): Returns a single message of a conversation by ID
+- [Get Conversation Messages](https://pact-im.github.io/docs/en/v2/messages/get-conversation-messages.md): Returns paginated messages of a conversation
+- [Messages](https://pact-im.github.io/docs/en/v2/messages/index.md): A message is a single text or media item inside a conversation between your company and a client
+- [Send Message](https://pact-im.github.io/docs/en/v2/messages/send-message.md): Send a message to an existing conversation
+- [Pagination](https://pact-im.github.io/docs/en/v2/pagination.md): Paginate list endpoints in API v2
+- [Rate limits](https://pact-im.github.io/docs/en/v2/rate-limits.md): Request rate limits for API v2
+- [Get WABA Templates](https://pact-im.github.io/docs/en/v2/waba-templates/get-waba-templates.md): Returns paginated WABA templates for your companies
+- [WABA Templates](https://pact-im.github.io/docs/en/v2/waba-templates/index.md): A WABA template is an approved WhatsApp Business message template you can send as a first outbound message
+- [Auth events](https://pact-im.github.io/docs/en/v2/webhooks/auth-events.md): Webhook payloads for auth create, update, and delete events
+- [Conversation events](https://pact-im.github.io/docs/en/v2/webhooks/conversation-events.md): Webhook payloads for conversation create, update, and delete events
+- [Events](https://pact-im.github.io/docs/en/v2/webhooks/index.md): Overview of API v2 webhook payloads and delivery
+- [Message events](https://pact-im.github.io/docs/en/v2/webhooks/message-events.md): Webhook payloads for message create and update events
+
