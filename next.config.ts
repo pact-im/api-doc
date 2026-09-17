@@ -6,7 +6,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: process.env.NODE_ENV === "production" ? "export" : undefined,
   images: {
     unoptimized: true,
   },

@@ -11,6 +11,8 @@ type PageProps = {
 
 const locale = "en" as const
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return getAllDocSlugs(locale)
     .filter((slug) => slug.length > 0)

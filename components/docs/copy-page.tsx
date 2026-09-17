@@ -69,11 +69,11 @@ export function CopyPageMenu({
 }) {
   const ui = getUiMessages(locale)
   const [copied, setCopied] = React.useState(false)
-  const [pageUrl, setPageUrl] = React.useState("")
-
-  React.useEffect(() => {
-    setPageUrl(window.location.href.replace(/\/$/, "") || window.location.href)
-  }, [])
+  const pageUrl = React.useSyncExternalStore(
+    () => () => {},
+    () => window.location.href.replace(/\/$/, "") || window.location.href,
+    () => ""
+  )
 
   async function copyPage() {
     await navigator.clipboard.writeText(markdown)

@@ -9,6 +9,8 @@ type PageProps = {
   params: Promise<{ slug: string[] }>
 }
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return getAllDocSlugs(defaultLocale)
     .filter((slug) => slug.length > 0)

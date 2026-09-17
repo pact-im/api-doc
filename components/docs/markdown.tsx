@@ -169,7 +169,7 @@ function formatCalloutBody(body: string): string {
 }
 
 function preprocess(markdown: string): string {
-  let result = markdown.replace(
+  const result = markdown.replace(
     /^>\s+\*\*(Note|Warning|Success|Заметка|Внимание|Готово):\*\*\s*(.+)$/gm,
     (_, label: string, body: string) => {
       const normalized = label.toLowerCase()

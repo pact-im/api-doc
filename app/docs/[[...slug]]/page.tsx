@@ -6,6 +6,8 @@ type PageProps = {
   params: Promise<{ slug?: string[] }>
 }
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   const params: { slug: string[] }[] = [{ slug: [] }]
   for (const locale of locales) {

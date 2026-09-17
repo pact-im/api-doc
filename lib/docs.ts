@@ -175,6 +175,13 @@ export function getAllDocSlugs(locale: Locale = defaultLocale): string[][] {
   return slugs
 }
 
+export function getDocLastModified(
+  slug: string[],
+  locale: Locale = defaultLocale
+): Date {
+  return fs.statSync(slugToFilePath(slug, locale)).mtime
+}
+
 export function getAllDocs(locale: Locale = defaultLocale): Doc[] {
   return getAllDocSlugs(locale).map((slug) => getDocBySlug(slug, locale))
 }

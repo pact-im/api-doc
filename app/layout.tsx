@@ -3,6 +3,7 @@ import { Geist_Mono, Inter } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { getPublicSiteUrl } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
@@ -26,9 +27,8 @@ export const metadata: Metadata = {
   },
   description:
     "Документация Pact.im API. Интегрируйте WhatsApp, Telegram, Instagram, MAX, VK, Avito и другие каналы в ваш продукт.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://pact-im.github.io"
-  ),
+  metadataBase: new URL(getPublicSiteUrl()),
+  applicationName: "Pact.im API",
 }
 
 export default function RootLayout({
