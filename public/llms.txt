@@ -27,6 +27,11 @@
 - [Каналы (несколько компаний)](https://pact-im.github.io/docs/v2/auths/get-auths.md): Возвращает каналы нескольких компаний
 - [Каналы компании](https://pact-im.github.io/docs/v2/auths/get-company-auths.md): Возвращает все каналы компании
 - [Каналы](https://pact-im.github.io/docs/v2/auths/index.md): Канал — подключённый аккаунт мессенджера (WhatsApp, Telegram, VK и другие) для вашей компании
+- [Создать компанию](https://pact-im.github.io/docs/v2/companies/create-company.md): Создаёт новую компанию
+- [Получить список компаний](https://pact-im.github.io/docs/v2/companies/get-companies.md): Возвращает постраничный список компаний пользователя
+- [Получить компанию](https://pact-im.github.io/docs/v2/companies/get-company.md): Возвращает компанию по ID
+- [Компании](https://pact-im.github.io/docs/v2/companies/index.md): Компании — рабочие пространства для каналов, диалогов и команды
+- [Обновить компанию](https://pact-im.github.io/docs/v2/companies/update-company.md): Изменяет информацию о компании
 - [Создать вебхук](https://pact-im.github.io/docs/v2/company-webhooks/create-webhook.md): Создание нового вебхука компании (по умолчанию неактивного)
 - [Удалить вебхук](https://pact-im.github.io/docs/v2/company-webhooks/delete-webhook.md): Удаление вебхука компании
 - [Список вебхуков компании](https://pact-im.github.io/docs/v2/company-webhooks/get-company-webhooks.md): Возвращает постраничный список вебхуков компании
@@ -76,6 +81,11 @@
 - [Get Auths (Multi-company)](https://pact-im.github.io/docs/en/v2/auths/get-auths.md): Returns auths for multiple companies
 - [Get Company Auths](https://pact-im.github.io/docs/en/v2/auths/get-company-auths.md): Returns all auths for a company
 - [Auths](https://pact-im.github.io/docs/en/v2/auths/index.md): An auth is a connected messaging account — WhatsApp, Telegram, VK, and more — for your company
+- [Create a company](https://pact-im.github.io/docs/en/v2/companies/create-company.md): Creates a new company
+- [Get companies](https://pact-im.github.io/docs/en/v2/companies/get-companies.md): Returns a paginated list of the user's companies
+- [Get a company](https://pact-im.github.io/docs/en/v2/companies/get-company.md): Returns a company by ID
+- [Companies](https://pact-im.github.io/docs/en/v2/companies/index.md): Companies are workspaces for channels, conversations, and your team
+- [Update a company](https://pact-im.github.io/docs/en/v2/companies/update-company.md): Updates company details
 - [Create Webhook](https://pact-im.github.io/docs/en/v2/company-webhooks/create-webhook.md): Create a new company webhook (inactive by default)
 - [Delete Webhook](https://pact-im.github.io/docs/en/v2/company-webhooks/delete-webhook.md): Delete a company webhook
 - [Get Company Webhooks](https://pact-im.github.io/docs/en/v2/company-webhooks/get-company-webhooks.md): Returns a paginated list of webhooks for the company

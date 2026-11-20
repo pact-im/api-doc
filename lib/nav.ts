@@ -147,6 +147,28 @@ const navSectionDefs: NavSectionDef[] = [
         ],
       },
       {
+        title: { ru: "Компании", en: "Companies" },
+        href: "/v2/companies",
+        items: [
+          {
+            title: { ru: "Получить список компаний", en: "Get companies" },
+            href: "/v2/companies/get-companies",
+          },
+          {
+            title: { ru: "Получить компанию", en: "Get a company" },
+            href: "/v2/companies/get-company",
+          },
+          {
+            title: { ru: "Создать компанию", en: "Create a company" },
+            href: "/v2/companies/create-company",
+          },
+          {
+            title: { ru: "Обновить компанию", en: "Update a company" },
+            href: "/v2/companies/update-company",
+          },
+        ],
+      },
+      {
         title: { ru: "Каналы", en: "Auths" },
         href: "/v2/auths",
         items: [
