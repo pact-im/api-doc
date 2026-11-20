@@ -39,7 +39,17 @@ section: "v2"
     "last_message_id": 14056,
     "operational_state": "open",
     "replied_state": "replied",
-    "group": false
+    "group": false,
+    "tags": [
+      {
+        "id": 42,
+        "title": "VIP",
+        "color": "purple",
+        "position": 1,
+        "created_at": "2026-11-19T12:00:00.000Z",
+        "updated_at": "2026-11-19T12:00:00.000Z"
+      }
+    ]
   }
 }
 ```
@@ -62,3 +72,4 @@ last_message_id | Integer | [Идентификатор](/v2/messages#v2-message
 operational_state | String | `open`, `archived` или `blocked`
 replied_state | String | `initialized`, `replied` или `unreplied`
 group | Boolean | Является ли диалог групповым
+tags | Array | Список [тегов](/v2/tags#tag-object), назначенных диалогу

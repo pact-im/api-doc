@@ -19,6 +19,13 @@ Endpoint | Rate limits
 [Send message to existing conversation](/v2/messages/send-message) | Maximum 5 requests per second<br>Maximum 30 requests per minute
 [Write first message](/v2/conversations/write-first-message) | Maximum 5 requests per second<br>Maximum 30 requests per minute
 [Get WABA Templates](/v2/waba-templates/get-waba-templates) | Maximum 20 requests per minute
+[Get tag catalog](/v2/tags/get-tags) | Maximum 10 requests per minute
+[Create tag](/v2/tags/create-tag) | Maximum 10 requests per minute
+[Update tag](/v2/tags/update-tag) | Maximum 10 requests per minute
+[Delete tag](/v2/tags/delete-tag) | Maximum 10 requests per minute
+[Get conversation tags](/v2/tags/get-conversation-tags) | Maximum 10 requests per minute
+[Assign tag to conversation](/v2/tags/assign-conversation-tag) | Maximum 10 requests per minute
+[Remove tag from conversation](/v2/tags/remove-conversation-tag) | Maximum 10 requests per minute
 
 ## When a limit is exceeded
 
