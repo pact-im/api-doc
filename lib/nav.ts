@@ -187,6 +187,40 @@ const navSectionDefs: NavSectionDef[] = [
         ],
       },
       {
+        title: { ru: "Теги", en: "Tags" },
+        href: "/v2/tags",
+        items: [
+          {
+            title: { ru: "Каталог тегов", en: "Get tag catalog" },
+            href: "/v2/tags/get-tags",
+          },
+          {
+            title: { ru: "Создать тег", en: "Create tag" },
+            href: "/v2/tags/create-tag",
+          },
+          {
+            title: { ru: "Обновить тег", en: "Update tag" },
+            href: "/v2/tags/update-tag",
+          },
+          {
+            title: { ru: "Удалить тег", en: "Delete tag" },
+            href: "/v2/tags/delete-tag",
+          },
+          {
+            title: { ru: "Теги диалога", en: "Get conversation tags" },
+            href: "/v2/tags/get-conversation-tags",
+          },
+          {
+            title: { ru: "Назначить тег диалогу", en: "Assign tag to conversation" },
+            href: "/v2/tags/assign-conversation-tag",
+          },
+          {
+            title: { ru: "Снять тег с диалога", en: "Remove tag from conversation" },
+            href: "/v2/tags/remove-conversation-tag",
+          },
+        ],
+      },
+      {
         title: { ru: "WABA-шаблоны", en: "WABA Templates" },
         href: "/v2/waba-templates",
         items: [

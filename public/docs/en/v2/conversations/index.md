@@ -37,7 +37,17 @@ With the Conversations API you can:
     "last_message_id": 14056,
     "operational_state": "open",
     "replied_state": "replied",
-    "group": false
+    "group": false,
+    "tags": [
+      {
+        "id": 42,
+        "title": "VIP",
+        "color": "purple",
+        "position": 1,
+        "created_at": "2026-11-19T12:00:00.000Z",
+        "updated_at": "2026-11-19T12:00:00.000Z"
+      }
+    ]
   }
 }
 ```
@@ -60,3 +70,4 @@ last_message_id | Integer | [ID](/v2/messages#v2-message-id) of the last message
 operational_state | String | `open`, `archived`, or `blocked`
 replied_state | String | `initialized`, `replied`, or `unreplied`
 group | Boolean | Whether this is a group conversation
+tags | Array | List of [tags](/v2/tags#tag-object) assigned to the conversation
